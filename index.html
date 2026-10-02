@@ -23,7 +23,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       -webkit-tap-highlight-color: transparent;
     }
 
@@ -38,7 +38,7 @@
 
     .container {
       width: 100%;
-      max-width: 720px;
+      max-width: 760px;
       display: flex;
       flex-direction: column;
       gap: 12px;
@@ -161,7 +161,7 @@
     }
 
     .jump-input {
-      width: 55px;
+      width: 60px;
       padding: 5px;
       border: 1px solid var(--border);
       border-radius: 6px;
@@ -189,6 +189,16 @@
       line-height: 1.6;
       font-weight: 600;
       color: #f8fafc;
+    }
+
+    .q-diagram {
+      margin: 10px 0;
+      display: flex;
+      justify-content: center;
+      background: #090d16;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #2d3748;
     }
 
     .options-list {
@@ -302,7 +312,7 @@
 
   <div class="dashboard">
     <div class="dash-item">
-      <div class="label">作答得分 / 總題數</div>
+      <div class="label">作答進度 / 總題數</div>
       <div class="value val-score" id="stat-score">0 / 0</div>
     </div>
     <div class="dash-item">
@@ -314,14 +324,14 @@
       <div class="value val-wrong" id="stat-wrong">0</div>
     </div>
     <div class="dash-item">
-      <div class="label">收藏題庫數</div>
+      <div class="label">收藏題數</div>
       <div class="value val-fav" id="stat-fav">0</div>
     </div>
   </div>
 
   <div class="controls">
     <div class="btn-group">
-      <button id="btn-mode-all" class="active" onclick="switchFilter('all')">全部題庫 (216題)</button>
+      <button id="btn-mode-all" class="active" onclick="switchFilter('all')">全部題庫 (<span id="total-count">0</span>題)</button>
       <button id="btn-mode-wrong" onclick="switchFilter('wrong')">錯題複習 (<span id="wrong-count">0</span>)</button>
       <button id="btn-mode-fav" onclick="switchFilter('fav')">收藏題 (<span id="fav-count">0</span>)</button>
     </div>
@@ -343,6 +353,7 @@
     </div>
 
     <div class="question-content" id="q-text">題庫載入中...</div>
+    <div id="q-diagram-container"></div>
 
     <div class="options-list" id="q-options"></div>
 
@@ -443,6 +454,4 @@ const rawQuestions = [
   {id:82,q:"有甲、乙、丙三個系統,其效率分別為X、Y及0.9;若甲和丙串接,總輸入及輸出為500W及360W;若乙和丙串接,總輸入及輸出為400W及252W。若甲和乙串接,總輸出為200W,問其總輸入為多少?",opts:{A:"300瓦特",B:"357瓦特",C:"377瓦特",D:"432瓦特"},ans:"B",exp:"η甲 × 0.9 = 360/500 = 0.72 ⇒ η甲 = 0.8；η乙 × 0.9 = 252/400 = 0.63 ⇒ η乙 = 0.7；Pin × 0.8 × 0.7 = 200W ⇒ Pin = 200 / 0.56 ≈ 357W。"},
   {id:83,q:"有一工廠近期購買30kW直流發電機,效率為96%,試求在工作時其損失為多少?",opts:{A:"1.25kW",B:"12.5kW",C:"33kW",D:"33.3kW"},ans:"A",exp:"Pin = 30kW / 0.96 = 31.25kW；損失 Ploss = 31.25 - 30 = 1.25kW。"},
   {id:84,q:"手機電池容量為3200mAh,待機電流10mA,通話電流200mA。若總通話時間為10小時,則理想上總待機時間應為多少小時?",opts:{A:"96小時",B:"120小時",C:"144小時",D:"168小時"},ans:"B",exp:"Q = 3200 = 10×t + 200×10 ⇒ 10t = 3200 - 2000 = 1200 ⇒ t = 120 小時。"},
-  {id:85,q:"教室安裝2台冷氣機,8點開到17點(9小時),每台1000W。每度電7元,卡儲值1500元,可完整吹幾日?",opts:{A:"12日",B:"11日",C:"10日",D:"9日"},ans:"B",exp:"每日耗電 = 2 × 1kW × 9h = 18度；每日電費 = 18 × 7 = 126元；1500 / 126 ≈ 11.9日，可完整吹 11 日。"},
-  {id:86,q:"火龍果公司推出 iTyphoon 12,容量3200mAh,待機電流100mA,通話電流200mA。若通話1小時,理想待機時間為多少小時?",opts:{A:"30小時",B:"96小時",C:"120小時",D:"168小時"},ans:"A",exp:"3200 = 100×t + 200×1 ⇒ 100t = 3000 ⇒ t = 30 小時。"},
-  {id:87,q:"工廠購買直流發電機,額定電壓110V,額定功率30kW,效率96%,試求工作時損失為多少?",opts:{A:"1.25kW"
+  {id:85,q:"教室安裝2台冷氣機,8點開到17點(9小時),每台1000W。每度電7元,卡儲值1500元,可完整吹幾日?",opts:{A:"12日",B:"11日",C:"10日",D:"9日"},ans:"B",exp:"每日耗電 = 2 × 1kW × 9h = 18度；每日電費 = 18 × 7 = 126元；15
