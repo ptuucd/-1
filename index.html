@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>國立成大南工 115學年度第1學期第1次段考 線上刷題系統</title>
+  <style>
+    :root {
+      --primary: #3b82f6;
+      --primary-hover: #2563eb;
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --success: #22c55e;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+      --border: #334155;
+      --accent: #1e3a8a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      padding: 12px;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 720px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    header {
+      background: var(--card-bg);
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 1.15rem;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+
+    .sub-title {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      background: var(--card-bg);
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .dash-item .label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .dash-item .value {
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+
+    .val-score { color: var(--primary); }
+    .val-correct { color: var(--success); }
+    .val-wrong { color: var(--danger); }
+    .val-fav { color: var(--warning); }
+
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      background: var(--card-bg);
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    button {
+      background: #334155;
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-main);
+      transition: all 0.15s;
+    }
+
+    button.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+    }
+
+    .quiz-card {
+      background: var(--card-bg);
+      padding: 18px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+    }
+
+    .q-badge {
+      font-size: 0.8rem;
+      font-weight: bold;
+      background: var(--accent);
+      color: #93c5fd;
+      padding: 4px 10px;
+      border-radius: 16px;
+    }
+
+    .jump-container {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .jump-input {
+      width: 55px;
+      padding: 5px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: #0f172a;
+      color: white;
+      text-align: center;
+    }
+
+    .star-btn {
+      background: transparent;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #64748b;
+      padding: 0;
+      line-height: 1;
+    }
+
+    .star-btn.fav {
+      color: #f59e0b;
+    }
+
+    .question-content {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      font-weight: 600;
+      color: #f8fafc;
+    }
+
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .option-btn {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      width: 100%;
+      text-align: left;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1.5px solid var(--border);
+      background: #0f172a;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      cursor: pointer;
+      color: var(--text-main);
+    }
+
+    .opt-letter {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #334155;
+      font-weight: bold;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+    }
+
+    .option-btn.correct {
+      background-color: #064e3b !important;
+      border-color: var(--success) !important;
+      color: #a7f3d0 !important;
+      font-weight: 600;
+    }
+
+    .option-btn.correct .opt-letter {
+      background: var(--success);
+      color: white;
+    }
+
+    .option-btn.wrong {
+      background-color: #7f1d1d !important;
+      border-color: var(--danger) !important;
+      color: #fecaca !important;
+      font-weight: 600;
+    }
+
+    .option-btn.wrong .opt-letter {
+      background: var(--danger);
+      color: white;
+    }
+
+    .explanation-box {
+      display: none;
+      background: #0f172a;
+      border-left: 4px solid var(--primary);
+      padding: 12px 14px;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: #cbd5e1;
+    }
+
+    .explanation-box.show {
+      display: block;
+    }
+
+    .explanation-box strong {
+      color: var(--primary);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .nav-bar {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .nav-btn {
+      flex: 1;
+      padding: 12px;
+      font-size: 0.95rem;
+      border-radius: 10px;
+    }
+
+    .nav-btn.primary {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>國立成大南工 115學年度第1學期第1次段考題庫</h1>
+    <div class="sub-title">基本電學與實習工安 ‧ 全方位線上模擬刷題系統</div>
+  </header>
+
+  <div class="dashboard">
+    <div class="dash-item">
+      <div class="label">作答得分 / 總題數</div>
+      <div class="value val-score" id="stat-score">0 / 0</div>
+    </div>
+    <div class="dash-item">
+      <div class="label">答對數</div>
+      <div class="value val-correct" id="stat-correct">0</div>
+    </div>
+    <div class="dash-item">
+      <div class="label">答錯數</div>
+      <div class="value val-wrong" id="stat-wrong">0</div>
+    </div>
+    <div class="dash-item">
+      <div class="label">收藏題庫數</div>
+      <div class="value val-fav" id="stat-fav">0</div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <div class="btn-group">
+      <button id="btn-mode-all" class="active" onclick="switchFilter('all')">全部題庫 (216題)</button>
+      <button id="btn-mode-wrong" onclick="switchFilter('wrong')">錯題複習 (<span id="wrong-count">0</span>)</button>
+      <button id="btn-mode-fav" onclick="switchFilter('fav')">收藏題 (<span id="fav-count">0</span>)</button>
+    </div>
+    <div class="btn-group">
+      <button id="btn-shuffle" onclick="toggleShuffle()">隨機模式: 關</button>
+      <button onclick="resetStats()">重置紀錄</button>
+    </div>
+  </div>
+
+  <div class="quiz-card">
+    <div class="card-top">
+      <span class="q-badge" id="q-counter">題號...</span>
+      <div class="jump-container">
+        <span>跳至</span>
+        <input type="number" id="jump-idx" class="jump-input" min="1" onkeydown="handleJump(event)">
+        <span>題</span>
+      </div>
+      <button class="star-btn" id="star-btn" onclick="toggleCurrentFav()">★</button>
+    </div>
+
+    <div class="question-content" id="q-text">題庫載入中...</div>
+
+    <div class="options-list" id="q-options"></div>
+
+    <div class="explanation-box" id="q-explanation">
+      <strong>【詳解 / 解析】</strong>
+      <span id="explanation-text"></span>
+    </div>
+  </div>
+
+  <div class="nav-bar">
+    <button class="nav-btn" onclick="prevQuestion()">上一題</button>
+    <button class="nav-btn primary" onclick="nextQuestion()">下一題</button>
+  </div>
+</div>
+
+<script>
+const rawQuestions = [
+  {id:1,q:"人的腳及腿常因搬運物料而遭傷害,尤以何處的傷害最多?",opts:{A:"小腿",B:"大腿",C:"腳底",D:"腳趾"},ans:"D",exp:"搬運物料墜落時最容易直接砸傷腳趾，工廠作業多要求穿著鋼頭安全鞋。"},
+  {id:2,q:"因呼吸有毒氣體所造成的中毒事件,都與工場不安全的何種原因有關?",opts:{A:"物理環境",B:"熱環境",C:"生物環境",D:"空氣環境"},ans:"D",exp:"有毒氣體、粉塵、缺氧等皆屬於工場不安全之「空氣環境」。"},
+  {id:3,q:"換裝熔斷的保險絲時應",opts:{A:"比原來的粗",B:"比原來的細",C:"與原來的同樣粗細",D:"不一定"},ans:"C",exp:"必須使用與原規格同容量（同粗細）之保險絲，不可任意加大以避免過載失保。"},
+  {id:4,q:"下列何者非屬於人員接觸之電氣性危害的原因?",opts:{A:"接觸到常態下帶電體",B:"接觸到絕緣破壞之導電體",C:"接近在高電壓電線範圍內",D:"接觸到24伏特電壓"},ans:"D",exp:"24伏特屬於安全特低電壓（SELV），通常非屬於人體接觸之致命電氣危害原因。"},
+  {id:5,q:"工場中的安全標示,紅色三角形表示",opts:{A:"禁止",B:"危險",C:"警告",D:"待修機器"},ans:"C",exp:"黃色/紅色三角形多用於警告危險；安全標示依規範：圓形為禁止、三角形為警告。"},
+  {id:6,q:"工場中的安全標示,紅色圓形代表",opts:{A:"禁止",B:"危險",C:"急救站",D:"注意"},ans:"A",exp:"紅色圓形（帶斜線或純圓）表示禁止行為。"},
+  {id:7,q:"對於墜落危險之預防措施,下列敘述何者正確?",opts:{A:"在外牆施工架等高處作業應盡量使用繫腰式安全帶",B:"安全帶應確實配掛在低於足下之堅固點",C:"高度2m以上之開口緣處應圍起警示帶",D:"高度2m以上之開口處應設護欄或安全網"},ans:"D",exp:"營造及工廠安全法規規定，高度2公尺以上高處開口應設護欄、護蓋或安全網。"},
+  {id:8,q:"以手推車搬運物品下坡時,手推車應在人的",opts:{A:"前面",B:"後面",C:"左側",D:"右側"},ans:"B",exp:"手推車下坡時，車應在人身後（人在車前方擋住阻力慢慢倒退），避免失控衝撞。"},
+  {id:9,q:"遵守工場安全守則是",opts:{A:"教師的職責",B:"學生的職責",C:"行政人員的職責",D:"工場中每一分子的職責"},ans:"D",exp:"工場安全人人都應嚴格遵守。"},
+  {id:10,q:"上學校實習課時,哪些人應該知道急救箱放置的地點?",opts:{A:"老師與學生",B:"醫護人員",C:"行政人員",D:"技術人員"},ans:"A",exp:"實習現場的老師與全體學生都必須清楚急救設備位置以備緊急取用。"},
+  {id:11,q:"勞工為節省時間,在未斷電情況下整理機臺,易發生哪種危害?",opts:{A:"捲夾感電",B:"缺氧",C:"墜落",D:"崩塌"},ans:"A",exp:"未斷電運轉中清潔易造成捲夾及碰觸帶電體感電。"},
+  {id:12,q:"工作場所化學性有害物進入人體最常見路徑為下列何者?",opts:{A:"口腔",B:"呼吸道",C:"皮膚",D:"眼睛"},ans:"B",exp:"呼吸道吸入是化學性有害蒸氣、毒氣及粉塵進入人體最主要的途徑。"},
+  {id:13,q:"於營造工地潮濕場所中使用電動機具,為防止感電危害,應於該電路設置何種安全裝置?",opts:{A:"閉關箱",B:"自動電擊防止裝置",C:"高感度高速型漏電斷路器",D:"高容量保險絲"},ans:"C",exp:"潮濕場所電動工具應於分路設置高感度高速型漏電斷路器（ELCB）。"},
+  {id:15,q:"勞工安全衛生法之目的,在於保障",opts:{A:"生命財產",B:"賺錢",C:"勞資和諧",D:"國家安全"},ans:"A",exp:"職業安全衛生法規旨於保障工作者之安全與健康，維護生命財產。"},
+  {id:16,q:"防止感電的方法可用",opts:{A:"裝保險絲",B:"裝閘刀開關",C:"裝無熔絲開關",D:"電氣設備接地"},ans:"D",exp:"設備外殼有效接地可將漏電電流導入大地，避免人體觸及產生致命感電。"},
+  {id:17,q:"人體之皮膚電阻",opts:{A:"隨皮膚濕度增加而減小",B:"隨皮膚濕度增加而增加",C:"與電壓成正比",D:"與電壓成反比"},ans:"A",exp:"潮濕或流汗時皮膚電阻大幅下降，通過人體電流劇增而增加危險。"},
+  {id:18,q:"下列何者非屬電氣災害類型?",opts:{A:"電弧灼傷",B:"電氣火災",C:"靜電危害",D:"雷電"},ans:"D",exp:"雷電屬於天然天候災害，常態電氣災害指感電、電弧灼傷、電氣火災及靜電。"},
+  {id:19,q:"滅火器懸掛的位置應",opts:{A:"隱密",B:"約腰部的高度",C:"比身高還高",D:"鎖在保險櫃裏"},ans:"B",exp:"滅火器頂部離地不宜超過1.5m，約在腰部高度以方便快速取用。"},
+  {id:20,q:"以人力搬運重物,若使用法不當時,則何處容易造成傷害?",opts:{A:"胸部",B:"腿部",C:"背部",D:"手部"},ans:"C",exp:"搬重物若彎腰施力極易造成腰背部肌肉拉傷與椎間盤損傷。"},
+  {id:21,q:"安全帽承受巨大外力衝擊後,雖外觀良好,應採下列何種處理方式?",opts:{A:"廢棄",B:"繼續使用",C:"送修",D:"油漆保護"},ans:"A",exp:"內部結構已產生微觀破裂失去吸震防護力，必須立即報廢淘汰。"},
+  {id:22,q:"下列何者可做為電器線路過電流保護之用?",opts:{A:"變壓器",B:"電阻器",C:"避雷器",D:"熔絲斷路器"},ans:"D",exp:"熔絲（保險絲）或無熔線斷路器（NFB）為常用之過電流保護設備。"},
+  {id:23,q:"導線壓接時,宜慎選",opts:{A:"開關",B:"絕緣等級",C:"操作棒",D:"壓接鉗 以符合各導線線徑"},ans:"D",exp:"壓接須依線徑選用合適口徑之壓接鉗，以確保壓接緊密不過緊或鬆脫。"},
+  {id:24,q:"如圖所示25mm測微計之指示為多少?",opts:{A:"9.15mm",B:"8.69mm",C:"8.54mm",D:"7.64mm"},ans:"B",exp:"套筒主刻度讀取8.5mm，圓周刻度對齊19格(0.19mm)，合計為 8.5 + 0.19 = 8.69mm。"},
+  {id:25,q:"公制鋼尺上之最小刻度為多少?",opts:{A:"0.1mm",B:"0.5mm",C:"1mm",D:"5mm"},ans:"B",exp:"標準公制工廠鋼尺通常最小分度劃線為 0.5 mm。"},
+  {id:26,q:"游標卡尺在本尺上每刻劃的尺寸為多少?",opts:{A:"1mm",B:"0.5mm",C:"0.05mm",D:"0.02mm"},ans:"A",exp:"一般常用標準游標卡尺之主尺（本尺）每格刻度為 1 mm。"},
+  {id:27,q:"游標卡尺的游尺刻度以本尺刻度格等分為多少格?",opts:{A:"n+1",B:"n-1",C:"n+2",D:"n-2"},ans:"A",exp:"依據游標尺原理，常將本尺之 (n-1) 格長度等分為副尺之 n 格，或取等長刻分為 n+1 格。"},
+  {id:28,q:"使用電工刀剝除導線絕緣皮時,應使刀口向何處才正確?",opts:{A:"內",B:"上",C:"下",D:"外"},ans:"D",exp:"削鉛筆式向外推削，嚴禁刀口朝向自己或身體。"},
+  {id:29,q:"電燈及電熱工程所使用之單線直徑不得小於多少?",opts:{A:"1.2mm",B:"1.6mm",C:"2.0mm",D:"2.6mm"},ans:"B",exp:"依屋內線路裝置規則規定，低壓屋內配線單線最小直徑不得小於 1.6 mm。"},
+  {id:30,q:"電燈及電熱工程所使用絞線的截面積不得小於多少?",opts:{A:"2.0mm²",B:"2.6mm²",C:"3.5mm²",D:"5.5mm²"},ans:"C",exp:"低壓配線若使用絞線，其截面積不得小於 3.5 mm²。"},
+  {id:31,q:"電氣爐內之配線選用之導線為下列何者?",opts:{A:"PVC絞線",B:"PVC花線",C:"裸銅線",D:"電纜線"},ans:"C",exp:"電氣爐內部溫度極高，PVC塑膠絕緣會融化起火，爐內耐熱常採用裸銅線或耐高溫雲母線。"},
+  {id:32,q:"一般低壓PVC絕緣電線之最高容許溫度為多少?",opts:{A:"50°C",B:"55°C",C:"60°C",D:"65°C"},ans:"C",exp:"一般低壓 PVC 絕緣電線之最高容許運轉溫度為 60°C。"},
+  {id:33,q:"低壓耐熱PVC絕緣電線之最高容許溫度為多少?",opts:{A:"60°C",B:"75°C",C:"80°C",D:"90°C"},ans:"B",exp:"低壓耐熱級 PVC 電線最高容許溫度通常為 75°C。"},
+  {id:34,q:"依電工法規用戶用電設備裝置規則規定,絕緣導線之線徑在多少毫米以上需採用絞線?",opts:{A:"2.0mm",B:"2.6mm",C:"3.2mm",D:"5.0mm"},ans:"C",exp:"依裝置規則，導線線徑在 3.2 mm 以上者，原則上須採用絞線。"},
+  {id:35,q:"下列何種導線,適用於低壓屋內配線?",opts:{A:"鋁線",B:"硬抽銅線",C:"鋼心鋁線",D:"軟抽銅線"},ans:"D",exp:"軟抽銅線延展性佳、柔軟易彎折，廣泛用於建築屋內配線。"},
+  {id:36,q:"下列何種線材適用於長距離的高壓輸電線路?",opts:{A:"鋼心鋁導線",B:"軟銅線",C:"鋁導線",D:"硬抽銅導線"},ans:"A",exp:"鋼心鋁絞線（ACSR）抗拉強度高且重量輕，最適合大跨距長距離高壓架空輸電線路。"},
+  {id:37,q:"使用一25mm、50等分的公制測微計(分厘卡)測量某導線直徑時,套筒上的主刻度落在第7格與第8格之間,而套筒上的副刻度為第23格,請問該導線直徑為多少?",opts:{A:"7.23mm",B:"5.23mm",C:"3.73mm",D:"1.73mm"},ans:"C",exp:"每小格0.5mm，7格代表 3.5mm，加上副刻度 23×0.01 = 0.23mm，合計 3.5 + 0.23 = 3.73mm。"},
+  {id:38,q:"絞線接於開關時,如在線頭加銲錫或使用壓接端子可",opts:{A:"減少接觸電阻",B:"提高溫升",C:"增加電壓降",D:"降低耐張強度"},ans:"A",exp:"加銲錫或壓接端子能使接觸面緊實完整，降低接觸電阻並防止氧化與溫升。"},
+  {id:39,q:"導線壓接時,宜選用符合各導線線徑之何種工具?",opts:{A:"電工鉗",B:"壓接鉗",C:"斜口鉗",D:"鋼絲鉗"},ans:"B",exp:"專用壓接鉗配有對應線徑壓模，方可達標準緊密度。"},
+  {id:40,q:"活線作業勞工應佩帶何種防護手套?",opts:{A:"棉纱手套",B:"耐熱手套",C:"絕緣手套",D:"防振手套"},ans:"C",exp:"帶電活線作業必須配戴耐高壓之電氣絕緣防護手套。"},
+  {id:41,q:"一般導線連接以何種方法較佳?",opts:{A:"壓接法",B:"夾接法",C:"銲接法",D:"纏接法"},ans:"A",exp:"壓接法具備機械強度高、電氣接觸優良且施工品質穩定之特性。"},
+  {id:42,q:"接頭銲錫最適當鉛錫比例約為多少?",opts:{A:"1:9",B:"2:8",C:"3:7",D:"4:6"},ans:"D",exp:"電子及配線銲錫最理想共晶或近共晶合金比例為 錫60%/鉛40% (即 6:4，鉛錫比4:6)。"},
+  {id:43,q:"導線接頭加上銲錫後可以",opts:{A:"增加美觀",B:"提高接觸電阻",C:"增加機械強度",D:"節省成本"},ans:"C",exp:"上錫銲接可緊固導線結構，大幅增加接頭之機械拉伸強度及防止氧化鬆動。"},
+  {id:44,q:"烙鐵頭上氧化物太多時,應使用下列何者作清理?",opts:{A:"刀片",B:"砂紙",C:"濕石棉泡綿",D:"銲錫"},ans:"C",exp:"應在專用耐熱濕海綿（耐熱泡棉）上擦拭，避免破壞烙鐵頭鍍層。"},
+  {id:45,q:"關於60/40,0.8mm的銲錫,下列敘述何者正確?",opts:{A:"含銅量60%",B:"含銀量60%",C:"含鉛量60%",D:"含錫量60%"},ans:"D",exp:"60/40表示含錫量 60%、含鉛量 40%。"},
+  {id:46,q:"積熱電驛是在防止下列何者?",opts:{A:"短路",B:"漏電",C:"過載",D:"接地"},ans:"C",exp:"積熱電驛（TH-RY / 熱動過載繼電器）利用雙金屬片熱彎曲原理防止電動機過載運轉。"},
+  {id:47,q:"指示燈的顏色為紅色,表示被控制器具",opts:{A:"停止動作",B:"運作中",C:"故障",D:"接地"},ans:"B",exp:"在工業控制盤常態規範中，紅燈通常表示通電運轉中（危險/運作），綠燈表示停機。"},
+  {id:48,q:"TH-RY的c-a接點一般是連接下列何者?",opts:{A:"MC",B:"BZ",C:"PB",D:"OL"},ans:"B",exp:"c-a 為常開(NO)警報接點，過載跳脫時接通，通常連接蜂鳴器(BZ)或故障指示燈。"},
+  {id:49,q:"TH-RY的c-b接點是連接下列何者?",opts:{A:"MC",B:"BZ",C:"PB",D:"OL"},ans:"A",exp:"c-b 為常閉(NC)保護接點，串聯於電磁接觸器(MC)線圈迴路，過載時切斷使MC跳開。"},
+  {id:50,q:"鑽頭規格為M3.7是代表鑽頭何處為3.7mm?",opts:{A:"長度",B:"內徑",C:"外徑",D:"螺紋"},ans:"C",exp:"標記規格直徑表示鑽頭刃部外徑為 3.7 mm。"},
+  {id:51,q:"使用中心衝的作用為何?",opts:{A:"測量距離",B:"鑽孔",C:"攻牙",D:"定位"},ans:"D",exp:"在鑽孔前衝出中心凹孔以利鑽頭定位，防止鑽頭滑移偏位。"},
+  {id:52,q:"薄鐵板要固定器具應採用下列何者?",opts:{A:"木螺絲",B:"螺絲與螺母",C:"公制螺絲",D:"英制螺絲"},ans:"B",exp:"薄鐵板無法咬住木螺絲牙，應採用螺栓貫穿並以螺母鎖緊固定。"},
+  {id:53,q:"測試固定螺絲鎖緊時的程度,應使用下列何者?",opts:{A:"固定扳手",B:"套筒扳手",C:"扭力扳手",D:"梅花扳手"},ans:"C",exp:"扭力扳手可精準控制並顯示緊固扭矩大小。"},
+  {id:54,q:"一般配置圖上,器具位置之標示線為器具之",opts:{A:"中心線",B:"底線",C:"右側邊線",D:"左側邊線"},ans:"A",exp:"工程配置製圖標準中，標註尺寸定位皆以器具元件之「中心線」為基準。"},
+  {id:55,q:"家庭用之無熔絲開關,較常用的跳脫方式為下列何者?",opts:{A:"電子式",B:"熱動式",C:"熱動電磁式",D:"完全電磁式"},ans:"B",exp:"一般家庭分路常用之小型無熔絲開關（NFB）多為雙金屬片熱動式或熱動電磁式。"},
+  {id:56,q:"下列發電方式,何者稱為綠色能源?",opts:{A:"核能發電",B:"火力發電",C:"汽電共生",D:"太陽能發電"},ans:"D",exp:"太陽能、風力等天然再生能源被歸類為綠色能源。"},
+  {id:57,q:"下列發電方式,何者會造成嚴重的空氣汙染?",opts:{A:"水力發電",B:"核能發電",C:"火力發電",D:"太陽能發電"},ans:"C",exp:"燃煤、燃氣及燃油之火力發電會排放硫氧化物、氮氧化物及溫室氣體。"},
+  {id:58,q:"下列發電方式,何者會留下具輻射性的廢料?",opts:{A:"核能發電",B:"火力發電",C:"風力發電",D:"太陽能發電"},ans:"A",exp:"核能發電利用核分裂，會產出具高度輻射性之核廢料。"},
+  {id:59,q:"電流 I=10^-6 A 可簡寫為下列何者?",opts:{A:"10μA",B:"1μA",C:"10^-1 μA",D:"10^-2 μA"},ans:"B",exp:"1μ (micro) = 10^-6，故 10^-6 A = 1 μA。"},
+  {id:60,q:"電阻 R=10^6 Ω 可簡寫為下列何者?",opts:{A:"10^3 MΩ",B:"10^2 MΩ",C:"10MΩ",D:"1MΩ"},ans:"D",exp:"1M (mega) = 10^6，故 10^6 Ω = 1 MΩ。"},
+  {id:61,q:"國際單位制所設定的基本單位中,下列單位何者錯誤?",opts:{A:"電流:安培",B:"時間:秒",C:"質量:公斤",D:"長度:公分"},ans:"D",exp:"國際單位制(SI)長度的基本單位是「公尺」(m)，不是公分。"},
+  {id:62,q:"發電機的能量轉換機制為何?",opts:{A:"機械能→電能",B:"電能→機械能",C:"電能→磁能",D:"電能→化學能"},ans:"A",exp:"發電機輸入機械旋轉動力，輸出電能。"},
+  {id:63,q:"電動機又稱馬達,其能量轉換機制為何?",opts:{A:"機械能→電能",B:"電能→機械能",C:"化學能→電能",D:"電能→化學能"},ans:"B",exp:"電動機輸入電能，經電磁感應轉換輸出旋轉機械能。"},
+  {id:64,q:"當原本電中性的原子得到一個電子時,稱之為什麼?",opts:{A:"負離子",B:"正離子",C:"分子",D:"正原子"},ans:"A",exp:"電子帶負電，中性原子獲得電子後整體帶負電，成為負離子（陰離子）。"},
+  {id:65,q:"原子最外層的電子稱為什麼?",opts:{A:"原子核",B:"中子",C:"價電子",D:"自由電子"},ans:"C",exp:"位於原子最外層軌道、主導化學與電氣特性的電子稱為「價電子」。"},
+  {id:66,q:"矽原子有14個電子,原子最外層之價電子有4個,稱之為什麼?",opts:{A:"導體",B:"絕緣體",C:"半導體",D:"良導體"},ans:"C",exp:"價電子數為4的元素（如矽Si、鍺Ge）屬於「半導體」。"},
+  {id:67,q:"原子最外層之電子,受到外力影響而脫離軌道,這個電子稱為什麼?",opts:{A:"自由電子",B:"價電子",C:"中子",D:"質子"},ans:"A",exp:"脫離原子核束縛能夠在導體內自由游走的電子稱為「自由電子」。"},
+  {id:68,q:"1個電子之帶電量 = ?",opts:{A:"6.25×10^18 庫侖",B:"1庫侖",C:"3×10^3庫侖",D:"1.6×10^-19 庫倫"},ans:"D",exp:"單一電子帶基本電荷量 e = 1.602 × 10^-19 庫侖。"},
+  {id:69,q:"設A點電位 VA=40V, B點電位 VB=-50V, C點電位 VC=30V,則 VAC=?",opts:{A:"90V",B:"10V",C:"-10V",D:"-50V"},ans:"B",exp:"VAC = VA - VC = 40 - 30 = 10V。"},
+  {id:70,q:"電路中某一點對參考點之電位差,稱為某一點之什麼?",opts:{A:"電位",B:"電壓降",C:"電動勢",D:"電位差"},ans:"A",exp:"相對於零電位參考點（接地點）的電位差即定義為該點的「電位」。"},
+  {id:71,q:"一個電荷量5C的電荷通過一元件,作功50J,則元件兩端電位差為多少?",opts:{A:"50V",B:"10V",C:"5V",D:"2V"},ans:"B",exp:"依功的定義 W = Q·V ⇒ V = W / Q = 50 / 5 = 10V。"},
+  {id:72,q:"一般描述的電流流向與電子流的方向為何?",opts:{A:"相同",B:"相反",C:"由材質決定",D:"由長度決定"},ans:"B",exp:"傳統定義之正電流方向與帶負電之電子實際流動方向相反。"},
+  {id:73,q:"導線電流1A表示此導線每秒鐘通過多少個電子?",opts:{A:"6.25×10^18",B:"100",C:"1",D:"1.6×10^-19"},ans:"A",exp:"1 A = 1 C/s，1 C 相當於 1 / (1.6×10^-19) ≈ 6.25 × 10^18 個電子。"},
+  {id:74,q:"電能使用1度等於下列何者?",opts:{A:"1eV",B:"1J",C:"1kWh",D:"1kg-m"},ans:"C",exp:"電費計量單位 1度電 = 1 千瓦·小時 (1 kW·h)。"},
+  {id:75,q:"家裡有5盞60W電燈,每天開啟10小時,連續使用15天,共消耗多少電能?",opts:{A:"60度",B:"45度",C:"15度",D:"10度"},ans:"B",exp:"每日消耗 = 5 × 60W × 10h = 3000 W·h = 3度；15天共 3 × 15 = 45度。"},
+  {id:76,q:"有一個系統的效率是80%,當輸出功率是80kW時,其輸入功率為多少?",opts:{A:"200kW",B:"100kW",C:"80kW",D:"20kW"},ans:"B",exp:"效率 η = Po / Pi ⇒ Pi = Po / η = 80kW / 0.8 = 100kW。"},
+  {id:77,q:"有一個整體系統由A、B兩子系統組成,A系統的效率是90%,B系統的效率是0.8,請問整個系統的效率是多少?",opts:{A:"0.9",B:"0.8",C:"0.72",D:"0.6"},ans:"C",exp:"系統串聯總效率 ηT = ηA × ηB = 0.9 × 0.8 = 0.72 (72%)。"},
+  {id:78,q:"將一個帶有3.125×10^17電子之電荷自A點移至B點,已知VA=300V,VB=600V,則作功為多少?",opts:{A:"150J",B:"100J",C:"15J",D:"10J"},ans:"C",exp:"Q = 3.125×10^17 × 1.6×10^-19 = 0.05 C；W = Q·(VB - VA) = 0.05 × (600 - 300) = 15 J。"},
+  {id:79,q:"有一顆馬達的輸入電壓和電流各為110V和10A,若其工作效率為0.9,則該馬達輸出多少馬力?",opts:{A:"3馬力",B:"1.75馬力",C:"1.5馬力",D:"1.32馬力"},ans:"D",exp:"Pin = 110 × 10 = 1100W；Pout = 1100 × 0.9 = 990W；990 / 746 ≈ 1.32 hp。"},
+  {id:80,q:"有一台輸入功率為10kW的電動機,工作效率為95%,連續使用24小時,總共損失多少能量?",opts:{A:"80度",B:"50度",C:"20度",D:"12度"},ans:"D",exp:"損失功率 Ploss = 10kW × (1 - 0.95) = 0.5 kW；能量損失 = 0.5 kW × 24 h = 12 度 (kW·h)。"},
+  {id:81,q:"有3×10^-3庫侖電荷,從A點移向B點需作功0.15焦耳,若VA=80V,則VB為多少?",opts:{A:"50V",B:"80V",C:"130V",D:"300V"},ans:"C",exp:"W = Q·(VB - VA) ⇒ 0.15 = 3×10^-3 × (VB - 80) ⇒ VB - 80 = 50 ⇒ VB = 130V。"},
+  {id:82,q:"有甲、乙、丙三個系統,其效率分別為X、Y及0.9;若甲和丙串接,總輸入及輸出為500W及360W;若乙和丙串接,總輸入及輸出為400W及252W。若甲和乙串接,總輸出為200W,問其總輸入為多少?",opts:{A:"300瓦特",B:"357瓦特",C:"377瓦特",D:"432瓦特"},ans:"B",exp:"η甲 × 0.9 = 360/500 = 0.72 ⇒ η甲 = 0.8；η乙 × 0.9 = 252/400 = 0.63 ⇒ η乙 = 0.7；Pin × 0.8 × 0.7 = 200W ⇒ Pin = 200 / 0.56 ≈ 357W。"},
+  {id:83,q:"有一工廠近期購買30kW直流發電機,效率為96%,試求在工作時其損失為多少?",opts:{A:"1.25kW",B:"12.5kW",C:"33kW",D:"33.3kW"},ans:"A",exp:"Pin = 30kW / 0.96 = 31.25kW；損失 Ploss = 31.25 - 30 = 1.25kW。"},
+  {id:84,q:"手機電池容量為3200mAh,待機電流10mA,通話電流200mA。若總通話時間為10小時,則理想上總待機時間應為多少小時?",opts:{A:"96小時",B:"120小時",C:"144小時",D:"168小時"},ans:"B",exp:"Q = 3200 = 10×t + 200×10 ⇒ 10t = 3200 - 2000 = 1200 ⇒ t = 120 小時。"},
+  {id:85,q:"教室安裝2台冷氣機,8點開到17點(9小時),每台1000W。每度電7元,卡儲值1500元,可完整吹幾日?",opts:{A:"12日",B:"11日",C:"10日",D:"9日"},ans:"B",exp:"每日耗電 = 2 × 1kW × 9h = 18度；每日電費 = 18 × 7 = 126元；1500 / 126 ≈ 11.9日，可完整吹 11 日。"},
+  {id:86,q:"火龍果公司推出 iTyphoon 12,容量3200mAh,待機電流100mA,通話電流200mA。若通話1小時,理想待機時間為多少小時?",opts:{A:"30小時",B:"96小時",C:"120小時",D:"168小時"},ans:"A",exp:"3200 = 100×t + 200×1 ⇒ 100t = 3000 ⇒ t = 30 小時。"},
+  {id:87,q:"工廠購買直流發電機,額定電壓110V,額定功率30kW,效率96%,試求工作時損失為多少?",opts:{A:"1.25kW"
