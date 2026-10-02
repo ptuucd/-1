@@ -454,4 +454,328 @@ const rawQuestions = [
   {id:82,q:"有甲、乙、丙三個系統,其效率分別為X、Y及0.9;若甲和丙串接,總輸入及輸出為500W及360W;若乙和丙串接,總輸入及輸出為400W及252W。若甲和乙串接,總輸出為200W,問其總輸入為多少?",opts:{A:"300瓦特",B:"357瓦特",C:"377瓦特",D:"432瓦特"},ans:"B",exp:"η甲 × 0.9 = 360/500 = 0.72 ⇒ η甲 = 0.8；η乙 × 0.9 = 252/400 = 0.63 ⇒ η乙 = 0.7；Pin × 0.8 × 0.7 = 200W ⇒ Pin = 200 / 0.56 ≈ 357W。"},
   {id:83,q:"有一工廠近期購買30kW直流發電機,效率為96%,試求在工作時其損失為多少?",opts:{A:"1.25kW",B:"12.5kW",C:"33kW",D:"33.3kW"},ans:"A",exp:"Pin = 30kW / 0.96 = 31.25kW；損失 Ploss = 31.25 - 30 = 1.25kW。"},
   {id:84,q:"手機電池容量為3200mAh,待機電流10mA,通話電流200mA。若總通話時間為10小時,則理想上總待機時間應為多少小時?",opts:{A:"96小時",B:"120小時",C:"144小時",D:"168小時"},ans:"B",exp:"Q = 3200 = 10×t + 200×10 ⇒ 10t = 3200 - 2000 = 1200 ⇒ t = 120 小時。"},
-  {id:85,q:"教室安裝2台冷氣機,8點開到17點(9小時),每台1000W。每度電7元,卡儲值1500元,可完整吹幾日?",opts:{A:"12日",B:"11日",C:"10日",D:"9日"},ans:"B",exp:"每日耗電 = 2 × 1kW × 9h = 18度；每日電費 = 18 × 7 = 126元；15
+  {id:85,q:"教室安裝2台冷氣機,8點開到17點(9小時),每台1000W。每度電7元,卡儲值1500元,可完整吹幾日?",opts:{A:"12日",B:"11日",C:"10日",D:"9日"},ans:"B",exp:"每日耗電 = 2 × 1kW × 9h = 18度；每日電費 = 18 × 7 = 126元；1500 / 126 ≈ 11.9日，可完整吹 11 日。"},
+  {id:86,q:"火龍果公司推出 iTyphoon 12,容量3200mAh,待機電流100mA,通話電流200mA。若通話1小時,理想待機時間為多少小時?",opts:{A:"30小時",B:"96小時",C:"120小時",D:"168小時"},ans:"A",exp:"3200 = 100×t + 200×1 ⇒ 100t = 3000 ⇒ t = 30 小時。"},
+  {id:87,q:"有一物質其原子序為32,則下列敘述何者正確?",opts:{A:"其價電子(valence electron)數為3個",B:"其L層電子軌道總帶電量約為-1.28×10^-18 庫倫",C:"當環境溫度升高時,此物質的電性可能變為絕緣體",D:"其原子核的總帶電量約為5.1×10^-19庫倫"},ans:"B",exp:"L層有8個電子，帶電量為 8 × (-1.6×10^-19) = -1.28×10^-18 C。原子序32最外層(N層)價電子為4個。"},
+  {id:88,q:"在一均勻電場中,將一單位正電荷由無窮遠處移到B點需3.2eV,再由B點移到A點需作功3.2×10^-19焦耳,則下列何者正確?",opts:{A:"B、A兩點的電位差 VBA=-2V",B:"A、B兩點的電位差 VAB=4V",C:"A點的電位 VA=2V",D:"B點的電位 VB=-2V"},ans:"A",exp:"VB = 3.2V；W_BA = Q(VA - VB) ⇒ 3.2×10^-19 = 1.6×10^-19×(VA - 3.2) ⇒ VA = 5.2V。VBA = VB - VA = 3.2 - 5.2 = -2V。"},
+  {id:89,q:"有一銅導線的截面積為0.1平方公分,導線內的電流值為16毫安培,已知銅的電子密度為10^29個自由電子/立方公尺,則電子在導線中的平均速度為何?",opts:{A:"10^-3公尺/秒",B:"10公尺/秒",C:"10^-7公尺/秒",D:"10^9公尺/秒"},ans:"C",exp:"I = n·e·v·A ⇒ v = 16×10^-3 / [10^29 × 1.6×10^-19 × (0.1×10^-4)] = 10^-7 m/s。"},
+  {id:90,q:"如圖所示之電壓分配電路,下列電位差之敘述何者正確?",opts:{A:"當c點接地時, Vac=4V",B:"當a點接地時, Vac=-4V",C:"當b點接地時, Vac=4V",D:"當d點接地時, Vac=-4V"},ans:"D",diagram:`<svg width="260" height="110" viewBox="0 0 260 110"><rect x="15" y="15" width="230" height="75" fill="none" stroke="#94a3b8" stroke-width="2"/><text x="20" y="32" fill="#38bdf8" font-size="12">a</text><text x="75" y="32" fill="#38bdf8" font-size="12">b</text><text x="135" y="32" fill="#38bdf8" font-size="12">c</text><text x="195" y="32" fill="#38bdf8" font-size="12">d</text><text x="245" y="32" fill="#38bdf8" font-size="12">e</text><text x="45" y="55" fill="#f8fafc" font-size="11">4V</text><text x="105" y="55" fill="#f8fafc" font-size="11">2V</text><text x="165" y="55" fill="#f8fafc" font-size="11">8V</text><text x="220" y="55" fill="#f8fafc" font-size="11">6V</text></svg>`,exp:"各點間電位差不受接地點選擇影響，由迴路路徑計算得 Vac = -4 + 2 - 8 + 6 = -4V。"},
+  {id:91,q:"如圖所示 R1=1kΩ, R2=3kΩ, R3=6kΩ, d點接地,下列何者正確?",opts:{A:"Vab > Vbc",B:"Vab > Vac",C:"Vbc > Vac",D:"Vca > Vba"},ans:"C",diagram:`<svg width="240" height="130" viewBox="0 0 240 130"><rect x="35" y="20" width="165" height="85" fill="none" stroke="#94a3b8" stroke-width="2"/><line x1="120" y1="20" x2="120" y2="105" stroke="#94a3b8" stroke-width="2"/><text x="20" y="25" fill="#38bdf8" font-size="13">a</text><text x="20" y="110" fill="#38bdf8" font-size="13">b</text><text x="125" y="115" fill="#38bdf8" font-size="13">c</text><text x="205" y="110" fill="#38bdf8" font-size="13">d (接地)</text><text x="45" y="65" fill="#f8fafc" font-size="11">R1=1k</text><text x="125" y="65" fill="#f8fafc" font-size="11">R2=3k</text><text x="70" y="120" fill="#f8fafc" font-size="11">R3=6k</text><text x="205" y="65" fill="#f8fafc" font-size="11">3V</text><text x="155" y="95" fill="#f8fafc" font-size="11">6V</text></svg>`,exp:"Va=-3V, Vb=0V, Vc=-6V。故 Vab=-3V, Vbc=6V, Vac=3V，顯然 Vbc > Vac。"},
+  {id:92,q:"原子若獲得電子,將游離成為",opts:{A:"帶負電的離子",B:"帶正電的離子",C:"不帶任何電",D:"可能帶負電,亦可能帶正電"},ans:"A",exp:"原子本身電中性，獲得帶負電之電子後形成負離子。"},
+  {id:93,q:"1庫侖為",opts:{A:"1瓦特一秒",B:"1焦耳一秒",C:"1伏特一秒",D:"1安培一秒"},ans:"D",exp:"Q = I × t，故 1 庫侖 = 1 安培 × 秒 (A·s)。"},
+  {id:94,q:"1伏特為",opts:{A:"1焦耳/安培",B:"1焦耳/庫侖",C:"1瓦特/庫侖",D:"1瓦特/歐姆"},ans:"B",exp:"V = W / Q，故 1 伏特 = 1 焦耳 / 庫侖 (J/C)。"},
+  {id:95,q:"有一電容器的電容值為10nF,其中英文字母n代表的數值是",opts:{A:"10^-3",B:"10^-6",C:"10^-9",D:"10^-12"},ans:"C",exp:"n (nano) 表示 10^-9。"},
+  {id:96,q:"能量1焦耳代表",opts:{A:"1安培一小時",B:"1安培一秒",C:"1仟瓦小時",D:"1瓦特一秒"},ans:"D",exp:"W = P × t，故 1 焦耳 = 1 瓦特 × 秒 (W·s)。"},
+  {id:97,q:"有6kW之熱水器,每日平均加熱時間為30分鐘。若電費每度2元,則每月(30日)平均電費為何?",opts:{A:"900元",B:"180元",C:"100元",D:"75元"},ans:"B",exp:"每日耗電 = 6kW × 0.5h = 3度；月費用 = 3度 × 30天 × 2元 = 180元。"},
+  {id:98,q:"一庫侖大小荷電量相當含有多少個電子?",opts:{A:"6.25×10^15",B:"1.602×10^15",C:"6.25×10^18",D:"1.602×10^18"},ans:"C",exp:"1 / (1.602×10^-19) ≈ 6.25 × 10^18 個電子。"},
+  {id:99,q:"一電子的荷電量大小為多少庫侖?",opts:{A:"1.602×10^-19",B:"1.602×10^-18",C:"1.602×10^-17",D:"1.602×10^-16"},ans:"A",exp:"單一電子帶電量絕對值約為 1.602 × 10^-19 庫侖。"},
+  {id:100,q:"下列電相關的敘述,何者錯誤?",opts:{A:"使電荷移動而做之動力稱為電動勢",B:"導體中電子流動的方向就是傳統之電流的反方向",C:"1度電相當於1千瓦之電功率",D:"同性電荷相斥、異性電荷相吸"},ans:"C",exp:"1度電為電能單位（1 kWh = 1千瓦·小時），而非電功率單位。"},
+  {id:101,q:"下列敘述何者錯誤?",opts:{A:"相鄰之同性電荷產生相斥力",B:"電流流經電阻時,沿電流流經方向,電位將逐漸下降",C:"原子失去電子後成為負離子",D:"將1庫侖電荷之電位提升1V,須作功1焦耳"},ans:"C",exp:"原子失去電子（帶負電的粒子）後，質子數多於電子數，應成為「正離子」。"},
+  {id:102,q:"有兩點電荷,若帶電量分別為Q1與Q2,且兩電荷間距離為d,則Q1所受之靜電力",opts:{A:"與Q2成反比",B:"與d平方成正比",C:"與d成反比",D:"與d平方成反比"},ans:"D",exp:"庫侖定律 F = k·(Q1·Q2) / d^2，靜電力與距離平方成反比。"},
+  {id:103,q:"若兩帶等電量之金屬球相距2公分,其間之斥力為40達因,今設其中一電荷量增加一倍,兩球距離亦增大一倍,則作用力變為若干?",opts:{A:"10達因",B:"18達因",C:"20達因",D:"40達因"},ans:"C",exp:"F ∝ Q / d^2，Q變為2倍，d變為2倍(d^2變為4倍)，則 F' = 40 × (2 / 4) = 20 達因。"},
+  {id:104,q:"假設有一正20庫侖之點電荷,由A點移至B點須作功1600焦耳,則A點相對B點之電位差VAB為多少?",opts:{A:"-60V",B:"-80V",C:"+60V",D:"80V"},ans:"B",exp:"VBA = W/Q = 1600 / 20 = 80V。A點相對B點電位差 VAB = VA - VB = -80V。"},
+  {id:105,q:"假設有一個-5庫侖之點電荷,由20V移至A點須作負功40焦耳,則A點之電位為多少伏特,且此電荷為順電場或是逆電場移動?",opts:{A:"12V,逆電場移動",B:"-28V,順電場移動",C:"28V,逆電場移動",D:"15V,順電場移動"},ans:"C",exp:"W = Q(VA - 20) ⇒ -40 = -5(VA - 20) ⇒ VA - 20 = 8 ⇒ VA = 28V。負電荷移向高電位為逆電場方向受電場力移動。"},
+  {id:106,q:"有一電荷之電位為30V,欲使其作功10焦耳,須放出多少個電子?",opts:{A:"2.08×10^-18個",B:"2.08×10^18個",C:"3.12×10^-18個",D:"3.12×10^18個"},ans:"B",exp:"Q = W / V = 10 / 30 = (1/3) C。電子數 n = (1/3) × 6.25×10^18 ≈ 2.08 × 10^18 個。"},
+  {id:107,q:"將4庫侖的電荷通過一元件作功20焦耳,則元件兩端的電位差為多少?",opts:{A:"4V",B:"5V",C:"10V",D:"20V"},ans:"B",exp:"V = W / Q = 20 / 4 = 5V。"},
+  {id:108,q:"「電壓」的基本定義是",opts:{A:"V(伏)=Q(庫)×W(焦)",B:"V(伏)=Q(庫)/W(焦)",C:"V(伏)=W(焦)/Q(庫)",D:"V(伏)=Q^2(庫)/W(焦)"},ans:"C",exp:"電位/電壓定義為單位電荷所攜帶或作功的能量，即 V = W / Q。"},
+  {id:109,q:"若兩點的電位差VAB為正值時,下列敘述何者正確?",opts:{A:"VBA = VAB",B:"表示B點的電位高於A點的電位",C:"電流由B點流向A點",D:"VAB = VA - VB = WAB / Q"},ans:"D",exp:"VAB = VA - VB > 0 表示 A 點電位高於 B 點電位，電流由高電位 A 流向低電位 B。"},
+  {id:110,q:"若流過某電阻的電流為6A,則每分鐘通過該電阻截面積之電量為多少?",opts:{A:"360庫侖",B:"36庫侖",C:"6庫侖",D:"3庫侖"},ans:"A",exp:"Q = I × t = 6A × 60s = 360 庫侖。"},
+  {id:111,q:"通常定義1安培,是指每秒通過幾庫侖?",opts:{A:"0.01庫侖",B:"0.1庫侖",C:"1庫侖",D:"10庫侖"},ans:"C",exp:"1 A = 1 C / s，即每秒通過 1 庫侖電量。"},
+  {id:112,q:"某導線上之電流為3A,則在10分鐘內流過該導線之電量是多少?",opts:{A:"30庫侖",B:"90庫侖",C:"300庫侖",D:"1800庫侖"},ans:"D",exp:"Q = 3A × (10 × 60s) = 1800 庫侖。"},
+  {id:113,q:"蓄電池供應之容量單位等於",opts:{A:"電壓×電流",B:"電壓×時間",C:"電流×時間",D:"功率×時間"},ans:"C",exp:"電池容量常用 Ah (安培-小時) 或 mAh 表示，即 電流 × 時間。"},
+  {id:114,q:"有關電流的敘述,下列何者錯誤?",opts:{A:"每秒鐘通過導體任一截面積之電量",B:"就同一電流而言,電子移動速率與導線截面積成正比",C:"慣用電流方向與電子流的方向相反",D:"就同一導體而言,電子移動率與外加電壓成正比"},ans:"B",exp:"v = I / (n·e·A)，同一電流下截面積越大，電子平均飄移速率越慢（成反比）。"},
+  {id:115,q:"讓4×10^18個電子流過截面積為0.1cm²的金屬銅線,若電流為10mA,則所需的時間約為多少?",opts:{A:"12.8秒",B:"64秒",C:"128秒",D:"153.8秒"},ans:"B",exp:"Q = (4×10^18) / (6.25×10^18) = 0.64 C；t = Q / I = 0.64 / 0.01 = 64 秒。"},
+  {id:116,q:"以一只12V、40Ah的蓄電池,供應一只1.2W的燈泡,最多可以使用多少小時?",opts:{A:"480小時",B:"400小時",C:"40小時",D:"10小時"},ans:"B",exp:"總電能 W = 12V × 40Ah = 480 Wh；t = 480 Wh / 1.2W = 400 小時。"},
+  {id:117,q:"台北101大樓有一部高速電梯重1000kg,在40秒上升200m,若以電動機為動力,則電動機輸出功率至少為多少?",opts:{A:"4.9kW",B:"5kW",C:"500kW",D:"49kW"},ans:"D",exp:"W = mgh = 1000 × 9.8 × 200 = 1.96×10^6 J；P = W / t = 1.96×10^6 / 40 = 49000W = 49kW。"},
+  {id:118,q:"有一台額定100V、500W的電熱器使用於90V電源時,其所消耗的功率為多少?",opts:{A:"405W",B:"450W",C:"500W",D:"616W"},ans:"A",exp:"P ∝ V^2 ⇒ P' = 500 × (90/100)^2 = 500 × 0.81 = 405W。"},
+  {id:119,q:"有一部單相電動機接於100V電源,在5秒鐘內將200牛頓之重物等速提高10公尺,假設電動機之效率為80%,則輸入電流為多少?",opts:{A:"2A",B:"4A",C:"5A",D:"10A"},ans:"C",exp:"Pout = (200 × 10) / 5 = 400W；Pin = 400 / 0.8 = 500W；I = 500 / 100 = 5A。"},
+  {id:120,q:"電熱線額定值為100V/25W,下列敘述何者錯誤?",opts:{A:"電流值為0.25A",B:"電阻值為400Ω",C:"使用1分鐘產生1500焦耳熱量",D:"最大可流過25A電流"},ans:"D",exp:"額定額定電流僅為 I = P/V = 25/100 = 0.25A，流過25A會直接燒毀。"},
+  {id:121,q:"一原子失去電子後,其游離後將變成",opts:{A:"帶負電的離子",B:"可能帶正電亦可能帶負電",C:"不帶電",D:"帶正電的離子"},ans:"D",exp:"失去電子後質子數大於電子數，帶正電荷，稱為正離子。"},
+  {id:122,q:"根據原子的最外層軌道價電子數,下列敘述何者最不適宜?",opts:{A:"少於四個的物質為良導體",B:"多於四個的物質為絕緣體",C:"等於四個的物質是良導體,同時亦是絕緣體",D:"只有一個電子稱為自由電子"},ans:"C",exp:"價電子數等於4者為「半導體」，既不是良導體也不是典型絕緣體。"},
+  {id:123,q:"有關電流之敘述,下列何者最為適宜?",opts:{A:"每秒通過某截面之電量為1安培則稱為1庫侖",B:"I = Q / t",C:"慣用電流方向和電子流方向相同",D:"一庫侖電量相當於1.6×10^-19個電子"},ans:"B",exp:"電流的物理定義式為 I = Q / t。"},
+  {id:124,q:"一接收機天線有0.1μA微安電流,則每秒約有多少電子流動?",opts:{A:"6.125×10^12電子/秒",B:"4.25×10^12電子/秒",C:"4.5×10^11電子/秒",D:"6.25×10^11電子/秒"},ans:"D",exp:"Q = 0.1×10^-6 C；n = 0.1×10^-6 × 6.25×10^18 = 6.25 × 10^11 個電子。"},
+  {id:125,q:"某帶電金屬帶0.01μC電荷,則合計約為多少個電子的電量?",opts:{A:"1.602×10^10個",B:"6.25×10^-10個",C:"6.25×10^10個",D:"1.602×10^-16個"},ans:"C",exp:"n = 0.01×10^-6 × 6.25×10^18 = 6.25 × 10^10 個。"},
+  {id:126,q:"在真空中,有兩個帶正電荷金屬球相距1公尺,其排斥力為4.5牛頓;若將距離移開至1.5公尺,則排斥力變為多少?",opts:{A:"3牛頓",B:"2.25牛頓",C:"2牛頓",D:"1.5牛頓"},ans:"C",exp:"F ∝ 1 / d^2 ⇒ F' = 4.5 × (1 / 1.5)^2 = 4.5 / 2.25 = 2 牛頓。"},
+  {id:127,q:"某電池蓄有自由電子5×10^22個,若以定電流10安培供應負載,則約可以持續多少秒?",opts:{A:"500秒",B:"800秒",C:"1200秒",D:"1600秒"},ans:"B",exp:"Q = 5×10^22 × 1.6×10^-19 = 8000 C；t = Q / I = 8000 / 10 = 800 秒。"},
+  {id:128,q:"如下圖為一閉合電路,總電動勢代數和為1V,電阻為2Ω,則下列對此電路特性之敘述何者錯誤?",opts:{A:"a、c兩點間的電壓差為 Vac=3V",B:"每秒流經各點的電荷為1庫侖",C:"電路中的電流方向為逆時針方向,即 a-b-c-d",D:"2Ω電阻的消耗功率為0.5W"},ans:"B",diagram:`<svg width="220" height="120" viewBox="0 0 220 120"><rect x="30" y="20" width="160" height="80" fill="none" stroke="#94a3b8" stroke-width="2"/><text x="18" y="25" fill="#38bdf8" font-size="12">d</text><text x="195" y="25" fill="#38bdf8" font-size="12">c</text><text x="18" y="105" fill="#38bdf8" font-size="12">a</text><text x="195" y="105" fill="#38bdf8" font-size="12">b</text><text x="95" y="15" fill="#f8fafc" font-size="11">5V, -2V</text><text x="95" y="115" fill="#f8fafc" font-size="11">2Ω, 2V</text></svg>`,exp:"迴路電流 I = (5 - 2 - 2) / 2 = 0.5A，每秒流經電荷 Q = I·t = 0.5 庫侖，故選項B錯誤。"},
+  {id:129,q:"將5庫倫的正電荷由b點移至電場a點,須作功125焦耳,若a點電位為40V,則b點電位為多少?",opts:{A:"65V",B:"40V",C:"25V",D:"15V"},ans:"D",exp:"Vab = Va - Vb = W / Q = 125 / 5 = 25V ⇒ Vb = Va - 25 = 40 - 25 = 15V。"},
+  {id:130,q:"如圖所示,若Va=100V, Vb=-20V, 結合電路中電源標示, 試求兩點間真實電位差Vab為多少?",opts:{A:"-120V",B:"-80V",C:"120V",D:"150V"},ans:"D",diagram:`<svg width="220" height="90" viewBox="0 0 220 90"><line x1="20" y1="45" x2="200" y2="45" stroke="#94a3b8" stroke-width="2"/><circle cx="30" cy="45" r="4" fill="#38bdf8"/><circle cx="190" cy="45" r="4" fill="#38bdf8"/><text x="25" y="35" fill="#38bdf8" font-size="12">a</text><text x="185" y="35" fill="#38bdf8" font-size="12">b</text><text x="60" y="40" fill="#f8fafc" font-size="11">+ 20V -</text><text x="130" y="40" fill="#f8fafc" font-size="11">- 10V +</text></svg>`,exp:"節點電位依路徑累積計算：Vab = (100 + 20) - [-10 + (-20)] = 120 - (-30) = 150V。"},
+  {id:131,q:"一電池以定電壓1.5V/9mA供電10小時,此電池所提供之電能為多少?",opts:{A:"486焦耳",B:"243焦耳",C:"972焦耳",D:"1944焦耳"},ans:"A",exp:"W = P·t = V·I·t = 1.5 × (9×10^-3) × (10 × 3600) = 486 焦耳。"},
+  {id:132,q:"如圖電路,若Va=-12V,已知電源為48V與12V,電阻為2Ω與4Ω,則未知電阻Rx為多少?",opts:{A:"16Ω",B:"12Ω",C:"8Ω",D:"4Ω"},ans:"B",diagram:`<svg width="240" height="120" viewBox="0 0 240 120"><rect x="30" y="20" width="180" height="80" fill="none" stroke="#94a3b8" stroke-width="2"/><text x="115" y="15" fill="#38bdf8" font-size="12">a (Va=-12V)</text><text x="50" y="35" fill="#f8fafc" font-size="11">48V, 2Ω</text><text x="150" y="35" fill="#f8fafc" font-size="11">Rx, 12V</text><text x="95" y="115" fill="#f8fafc" font-size="11">4Ω, 24V</text></svg>`,exp:"列節點電壓得電流 I = 2A，Rx = 12Ω。"},
+  {id:133,q:"某家庭每日用電:200W電視4h、1200W電鍋45分、400W洗衣機45分、100W燈泡10個用4h;電費每度3.6元,該月(30天)電費為多少?",opts:{A:"180元",B:"324元",C:"648元",D:"723.6元"},ans:"C",exp:"每日耗電 = 800 + 900 + 300 + 4000 = 6000 Wh = 6度；月費用 = 6度 × 30天 × 3.6元 = 648元。"},
+  {id:134,q:"三系統串聯運轉,效率分別為90%、80%、50%,若輸入功率為500W,問輸出功率Po及損失功率分別為多少瓦特?",opts:{A:"Po=240W, Ploss=260W",B:"Po=236W, Ploss=264W",C:"Po=180W, Ploss=320W",D:"Po=165W, Ploss=335W"},ans:"C",exp:"總效率 η = 0.9 × 0.8 × 0.5 = 0.36；Po = 500 × 0.36 = 180W；Ploss = 500 - 180 = 320W。"},
+  {id:135,q:"欲讓4×10^18個電子流過截面積為0.1cm²的金屬銅線,若電流為5mA,則所需的時間約為多少秒?",opts:{A:"92",B:"106",C:"128",D:"154"},ans:"C",exp:"Q = 4×10^18 / 6.25×10^18 = 0.64 C；t = 0.64 / 0.005 = 128 秒。"},
+  {id:136,q:"某蓄電池內部電量原蓄有200庫侖,以5分鐘的時間將其充電至800庫侖,則其平均充電電流大小為多少?",opts:{A:"8A",B:"6A",C:"4A",D:"2A"},ans:"D",exp:"ΔQ = 800 - 200 = 600 C；I = ΔQ / t = 600 / (5 × 60) = 2A。"},
+  {id:137,q:"將一只帶1.25×10^18電子的電荷在10毫秒內自a點移至b點,已知Va=10V, Vb=60V,則平均功率為多少?",opts:{A:"1W",B:"10W",C:"10^3W",D:"10^6W"},ans:"C",exp:"Q = 1.25×10^18 / 6.25×10^18 = 0.2 C；W = 0.2 × (60 - 10) = 10 J；P = 10 / 0.01 = 1000W = 10^3 W。"},
+  {id:138,q:"如圖所示之電路,路徑電壓包含24V、反向6V及反向8V,試求端點間Vad之電位差為多少?",opts:{A:"8V",B:"10V",C:"22V",D:"26V"},ans:"B",diagram:`<svg width="220" height="70" viewBox="0 0 220 70"><line x1="20" y1="35" x2="200" y2="35" stroke="#94a3b8" stroke-width="2"/><text x="15" y="25" fill="#38bdf8" font-size="12">a</text><text x="75" y="25" fill="#f8fafc" font-size="11">24V</text><text x="125" y="25" fill="#f8fafc" font-size="11">-6V</text><text x="165" y="25" fill="#f8fafc" font-size="11">-8V</text><text x="200" y="25" fill="#38bdf8" font-size="12">d</text></svg>`,exp:"Vad = 24 - 6 - 8 = 10V。"},
+  {id:139,q:"如圖所示之電路,當開關S打開時Vab=36V, S接通時負載電流I=6A(RL=5Ω),則當a、c間短路時,電流Is為多少?",opts:{A:"36A",B:"18A",C:"7.2A",D:"6A"},ans:"A",diagram:`<svg width="220" height="100" viewBox="0 0 220 100"><rect x="25" y="25" width="80" height="50" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/><text x="35" y="55" fill="#f8fafc" font-size="11">線性有源</text><line x1="105" y1="35" x2="180" y2="35" stroke="#94a3b8" stroke-width="2"/><line x1="105" y1="65" x2="180" y2="65" stroke="#94a3b8" stroke-width="2"/><text x="190" y="40" fill="#38bdf8" font-size="12">a</text><text x="190" y="70" fill="#38bdf8" font-size="12">b</text></svg>`,exp:"開路電壓 Eth = 36V，總內阻 Rth = 36/6 - 5 = 1Ω，短路電流 Is = 36 / 1 = 36A。"},
+  {id:140,q:"如圖所示之電路,R由1Ω到30Ω線性增加,試求中央支路電流I變化為何?",opts:{A:"線性增加",B:"線性遞減",C:"非線性遞減",D:"不變"},ans:"D",diagram:`<svg width="240" height="120" viewBox="0 0 240 120"><rect x="30" y="20" width="180" height="70" fill="none" stroke="#94a3b8" stroke-width="2"/><line x1="120" y1="20" x2="120" y2="90" stroke="#94a3b8" stroke-width="2"/><text x="110" y="15" fill="#38bdf8" font-size="12">B</text><text x="115" y="60" fill="#f8fafc" font-size="11">↓ I</text><text x="50" y="45" fill="#f8fafc" font-size="11">24V, 2Ω</text><text x="160" y="45" fill="#f8fafc" font-size="11">可變R, 12V</text></svg>`,exp:"VB = 24 × (2 / (2+2)) = 12V，VC = 12V，兩端電位恆相等，流過之電流保持為0不變。"},
+  {id:141,q:"電鍋額定110V,主加熱器1000W,保溫加熱器50W,煮一次飯加熱20分,保溫加熱20分,每煮一次約需消耗多少度電能?",opts:{A:"0.2度",B:"0.35度",C:"0.9度",D:"1.2度"},ans:"B",exp:"W = 1000 × (20/60) + 50 × (20/60) = 333.3 + 16.7 = 350 Wh = 0.35 度。"},
+  {id:142,q:"有一抽水馬達輸入功率為500W,若其效率為80%,求其損失為多少?",opts:{A:"100W",B:"200W",C:"400W",D:"500W"},ans:"A",exp:"Po = 500 × 0.8 = 400W；Ploss = 500 - 400 = 100W。"},
+  {id:143,q:"有一台1kW的電熱水器,內裝有10公升的水,試求加熱10分鐘後,水溫上升了多少℃?",opts:{A:"6.2°C",B:"10.6°C",C:"14.4°C",D:"18.9°C"},ans:"C",exp:"H = m·s·ΔT = 0.24·P·t ⇒ 10000g × 1 × ΔT = 0.24 × 1000W × 600s ⇒ ΔT = 14.4°C。"},
+  {id:144,q:"將3庫侖的正電荷由A點移至B點需作功3焦耳,則A與B兩點間的電位差 (VB - VA) 為多少?",opts:{A:"-2V",B:"1V",C:"2V",D:"9V"},ans:"B",exp:"VBA = W / Q = 3 / 3 = 1V。"},
+  {id:145,q:"某手機待機消耗功率為0.036W,電池額定3.6V, 900mAh;充飽電理想情況下可待機多少小時?",opts:{A:"90",B:"70",C:"50",D:"30"},ans:"A",exp:"I = P / V = 0.036 / 3.6 = 0.01A = 10mA；t = 900mAh / 10mA = 90 小時。"},
+  {id:146,q:"一具4kW, 4人份儲熱式熱水器,每日平均加熱30分鐘,電費每度2.3元,每人份每月(30日)平均電費為多少?",opts:{A:"138.0元",B:"57.5元",C:"34.5元",D:"30.7元"},ans:"C",exp:"每月總耗電 = 4kW × 0.5h × 30 = 60度；總電費 = 60 × 2.3 = 138元；每人份 = 138 / 4 = 34.5 元。"},
+  {id:147,q:"兩電荷相距2公分彼此受力3牛頓。今將距離移開至4公分,則此時兩電荷彼此間受力為多少?",opts:{A:"0.48牛頓",B:"0.75牛頓",C:"1.25牛頓",D:"1.50牛頓"},ans:"B",exp:"距離增為 2 倍，作用力降為 (1/2)^2 = 1/4 倍 ⇒ 3 × 0.25 = 0.75 牛頓。"},
+  {id:148,q:"某一110V馬達輸出功率為1Hp(746W),消耗電流為9A,此時該馬達的效率最接近下列何者?",opts:{A:"90%",B:"85%",C:"80%",D:"75%"},ans:"D",exp:"Pin = 110V × 9A = 990W；η = 746 / 990 ≈ 75.35% ≈ 75%。"},
+  {id:149,q:"有一電器使用100V電壓,在5秒內消耗2000焦耳電能,連續使用10小時則消耗多少度電?",opts:{A:"1度",B:"2度",C:"3度",D:"4度"},ans:"D",exp:"P = 2000 / 5 = 400W = 0.4kW；10小時耗電 = 0.4kW × 10h = 4 度。"},
+  {id:150,q:"將2庫侖正電荷從電位20V處移至100V處花費10秒,則平均功率大小為多少?",opts:{A:"32W",B:"20W",C:"18W",D:"16W"},ans:"D",exp:"W = 2 × (100 - 20) = 160 J；P = W / t = 160 / 10 = 16W。"},
+  {id:151,q:"某蓄電池內部電量原蓄有200庫侖,以5分鐘時間將其充電至800庫侖,則平均充電電流大小為多少?",opts:{A:"8A",B:"6A",C:"4A",D:"2A"},ans:"D",exp:"I = (800 - 200) / (5 × 60) = 2A。"},
+  {id:152,q:"下列哪種元件兩端之電位差稱為電壓升?",opts:{A:"電燈",B:"電池",C:"電動機",D:"電視機"},ans:"B",exp:"電池可提供電能將電荷自低電位推向高電位，屬於提供電壓升之電源元件。"},
+  {id:153,q:"已知 Va=45V, Vb=-5V, 則 Vab = ?",opts:{A:"50V",B:"40V",C:"15V",D:"-40V"},ans:"A",exp:"Vab = Va - Vb = 45 - (-5) = 50V。"},
+  {id:154,q:"在電場中將3C電荷從無限遠移動到A點作功60J,若將電荷從A點移動到B點(VB=50V),需作功多少?",opts:{A:"100J",B:"90J",C:"80J",D:"70J"},ans:"B",exp:"VA = 60 / 3 = 20V；WAB = Q·(VB - VA) = 3 × (50 - 20) = 90 J。"},
+  {id:155,q:"電阻的單位為何?",opts:{A:"Ω (歐姆)",B:"V (伏特)",C:"A (安培)",D:"W (瓦特)"},ans:"A",exp:"電阻之標準國際制單位為歐姆 (Ω)。"},
+  {id:156,q:"電導的單位為何?",opts:{A:"Ω",B:"A",C:"S (西門子)",D:"J"},ans:"C",exp:"電導單位為西門子 (Siemens, 簡寫 S，早期亦稱 姆歐 ℧)。"},
+  {id:157,q:"電阻的倒數稱為什麼?",opts:{A:"導電",B:"電導",C:"電阻係數",D:"電導係數"},ans:"B",exp:"電阻的倒數 G = 1/R 定義為「電導」。"},
+  {id:158,q:"有A、B、C、D四種材料,其百分率電導係數分別為110%、100%、80%、60%,若不考慮成本,何者最適合做導體材料?",opts:{A:"A",B:"B",C:"C",D:"D"},ans:"A",exp:"電導係數愈高代表導電能力越好、阻抗越小，故110%之A材料最優。"},
+    {id:159,q:"通過導線的電流大小與下列元素之間的關係,何者正確?",opts:{A:"與導線截面積成正比",B:"與電子移動速率成反比",C:"與導線長度成正比",D:"與電阻係數成正比"},ans:"A",exp:"由 I = n·e·v·A 可知電流大小與截面積成正比。"},
+  {id:160,q:"某導線之電阻係數 ρ=3×10^-8 Ω-m,長度=5km,截面積 A=2mm²,則電阻值為多少?",opts:{A:"75Ω",B:"15Ω",C:"10Ω",D:"2Ω"},ans:"A",exp:"R = ρ·l / A = (3×10^-8 × 5×10^3) / (2×10^-6) = 75 Ω。"},
+  {id:161,q:"若某電纜線之等效電阻為每1公尺0.5mΩ,試求當其長度為200公尺時之等效電導值為多少?",opts:{A:"400S",B:"12S",C:"10S",D:"0.5S"},ans:"C",exp:"總電阻 R = 200 × 0.5×10^-3 = 0.1 Ω；電導 G = 1 / R = 1 / 0.1 = 10 S。"},
+  {id:162,q:"有一色碼電阻器,其顏色依序為藍紅棕銀,試求此電阻的誤差範圍為多少?",opts:{A:"±62kΩ",B:"±6.2kΩ",C:"±0.62kΩ",D:"±62Ω"},ans:"D",exp:"藍(6) 紅(2) 棕(10^1) 銀(±10%) ⇒ 620Ω ± 10% = ±62Ω。"},
+  {id:163,q:"有一電阻器的色碼為紅橙藍銀,其電阻為多少?",opts:{A:"32MΩ±5%",B:"23MΩ±10%",C:"32Ω±5%",D:"23Ω±10%"},ans:"B",exp:"紅(2) 橙(3) 藍(10^6) 銀(±10%) ⇒ 23 × 10^6 Ω ± 10% = 23 MΩ ± 10%。"},
+  {id:164,q:"有一電阻器的色碼為金綠黃紫(依五色碼有效讀數),其電阻為多少?",opts:{A:"74MΩ±5%",B:"7.4MΩ±5%",C:"740Ω±5%",D:"74Ω±10%"},ans:"B",exp:"紫(7) 黃(4) 綠(10^5) 金(±5%) ⇒ 74 × 10^5 Ω = 7.4 MΩ ± 5%。"},
+  {id:165,q:"有20Ω的電阻器,加上50V的電壓時,在電阻上流經的電流為多少?",opts:{A:"50A",B:"20A",C:"2.5A",D:"2A"},ans:"C",exp:"I = V / R = 50 / 20 = 2.5 A。"},
+  {id:166,q:"有100Ω的電阻器,流經電阻器的電流為120mA,則電阻器兩端的電位差為多少?",opts:{A:"100V",B:"12V",C:"1.2V",D:"0.12V"},ans:"B",exp:"V = I × R = 0.12A × 100Ω = 12 V。"},
+  {id:167,q:"在一個電阻器的兩端通上1.5V的電壓時,流經50mA的電流,請問該電阻器的電阻值為多少?",opts:{A:"50Ω",B:"30Ω",C:"3Ω",D:"1.5Ω"},ans:"B",exp:"R = V / I = 1.5 / 0.05 = 30 Ω。"},
+  {id:168,q:"如圖所示電路,兩端電壓為20V與10V,中間電阻為2Ω,則電流為多少?",opts:{A:"20A",B:"10A",C:"5A",D:"1A"},ans:"C",diagram:`<svg width="200" height="60" viewBox="0 0 200 60"><line x1="20" y1="30" x2="180" y2="30" stroke="#94a3b8" stroke-width="2"/><text x="15" y="25" fill="#38bdf8" font-size="12">20V</text><text x="90" y="22" fill="#f8fafc" font-size="11">2Ω</text><text x="175" y="25" fill="#38bdf8" font-size="12">10V</text></svg>`,exp:"電位差 = 20 - 10 = 10V；I = 10 / 2 = 5 A。"},
+  {id:169,q:"市面上常見的100W燈泡,工作電壓為110V,此燈泡之電阻值為多少?",opts:{A:"1210Ω",B:"121Ω",C:"110Ω",D:"100Ω"},ans:"B",exp:"R = V^2 / P = 110^2 / 100 = 121 Ω。"},
+  {id:170,q:"廣告招牌常用的500W白熾燈,工作電壓為110V,此燈泡之電阻值及工作電流為多少?",opts:{A:"24.2Ω, 50A",B:"24.2Ω, 4.54A",C:"20Ω, 4.54A",D:"12Ω, 50A"},ans:"B",exp:"R = 110^2 / 500 = 24.2 Ω；I = 500 / 110 ≈ 4.54 A。"},
+  {id:171,q:"有一電阻元件外加10V電壓時,流過的電流為0.5A。今若有2A的電流流過該元件,則其消耗功率為多少?",opts:{A:"80W",B:"60W",C:"40W",D:"20W"},ans:"A",exp:"R = 10 / 0.5 = 20Ω；P = I^2·R = 2^2 × 20 = 80 W。"},
+  {id:172,q:"在製作電阻時,若希望電阻值不易受到溫度影響,則應該選擇具有下列何種特性的材料?",opts:{A:"電阻係數小",B:"電導係數小",C:"電阻溫度係數小",D:"電阻溫度係數大"},ans:"C",exp:"電阻溫度係數 α 越接近 0，溫度變化對阻值的影響越小。"},
+  {id:173,q:"有一銅線圈繞組在15.5℃時量測電阻值為5Ω,當溫度升高到75.5℃時電阻值為多少?",opts:{A:"23.5Ω",B:"20Ω",C:"15.5Ω",D:"6.2Ω"},ans:"D",exp:"R2/R1 = (234.5 + 75.5) / (234.5 + 15.5) = 310 / 250 = 1.24 ⇒ R2 = 5 × 1.24 = 6.2 Ω。"},
+  {id:174,q:"有一電阻器在40℃時為40Ω,在150℃時為60Ω,試求此電阻器在20℃時的溫度係數為多少?",opts:{A:"0.009",B:"0.005",C:"0.003",D:"0.001"},ans:"B",exp:"推論絕對零度 |T0| = 180℃；α20 = 1 / (180 + 20) = 1 / 200 = 0.005。"},
+  {id:175,q:"若要將1卡熱量轉換為焦耳能量單位,要乘上多少?",opts:{A:"9.8",B:"4.18",C:"1",D:"0.24"},ans:"B",exp:"1 卡 (cal) ≈ 4.184 焦耳 (J)。"},
+  {id:176,q:"有一10Ω的電阻器,流經2A的電流,經過1小時,產生的熱量為多少卡?",opts:{A:"3456卡",B:"567卡",C:"456卡",D:"345卡"},ans:"A",exp:"依原卷詳解：H = 0.24·I^2·R·t = 0.24 × 4 × 10 × 3600 = 34560 卡（原卷選項為3456卡）。"},
+  {id:177,q:"A、B兩導線同材質,A長度為B的2倍,B截面積為A的4倍,則A導線電阻為B的多少倍?",opts:{A:"8",B:"4",C:"2",D:"0.5"},ans:"A",exp:"RA / RB = (lA / lB) × (AB / AA) = 2 × 4 = 8 倍。"},
+  {id:178,q:"有一額定100V/1000W電爐,因電熱絲損壞剪去20%,修剪後接原電壓之消耗功率為多少?",opts:{A:"2000W",B:"1250W",C:"800W",D:"200W"},ans:"B",exp:"原阻值 R = 100^2 / 1000 = 10Ω；剪去20%後 R' = 8Ω；新功率 P' = 100^2 / 8 = 1250 W。"},
+  {id:179,q:"有一電熱器內阻25Ω用來加熱2000g水,通入5A電流使水溫從25℃升到37℃需時多久?",opts:{A:"200秒",B:"160秒",C:"100秒",D:"40秒"},ans:"B",exp:"H = m·s·ΔT = 2000 × 1 × 12 = 24000 卡；0.24 × 5^2 × 25 × t = 24000 ⇒ 150t = 24000 ⇒ t = 160 秒。"},
+  {id:180,q:"兩同長電爐線,A線徑為B之2倍,已知A線功率為1000W(同電壓下),則B線為多少?",opts:{A:"250W",B:"500W",C:"2000W",D:"4000W"},ans:"A",exp:"A線截面積為B之4倍 ⇒ RA = RB / 4；同電壓下 P ∝ 1/R ⇒ PB = PA / 4 = 1000 / 4 = 250 W。"},
+  {id:181,q:"電路圖中的符號 V.R. 是指下列何者?",opts:{A:"可變電阻",B:"固定電阻",C:"光敏電阻",D:"熱敏電阻"},ans:"A",exp:"V.R. 為 Variable Resistor（可變電阻器）之縮寫。"},
+  {id:182,q:"若是將20Ω的電熱線通以5A電流,加熱10公斤的水,水溫初溫為30℃,90分鐘之後水溫為多少度?",opts:{A:"94.8°C",B:"85.3°C",C:"82.9°C",D:"78.2°C"},ans:"A",exp:"ΔT = (0.24 × 5^2 × 20 × 5400) / 10000 = 64.8°C；末溫 T2 = 30 + 64.8 = 94.8°C。"},
+  {id:183,q:"安娜在實習工場做實驗,目前測得電阻上的電壓為10V,電流為400mA,若當電流變為2安培時,電壓降為多少?",opts:{A:"2V",B:"50V",C:"80V",D:"250V"},ans:"B",exp:"R = 10 / 0.4 = 25Ω；V' = 2A × 25Ω = 50 V。"},
+  {id:184,q:"小新在修理電熱爐時,不小心將其內部的電熱線剪掉一部分變成原來的四分之三;在原額定電壓下使用將會發生何種情況?",opts:{A:"功率減少",B:"電流減少",C:"電阻增加",D:"發熱量增加"},ans:"D",exp:"電阻降為 3/4，功率與電流增為 4/3 倍，每秒發熱量增加。"},
+  {id:185,q:"在神祕國度中有A、B、C、D四種材料,百分率電導係數分別為110%、100%、80%、60%,若不考慮成本,何者最適合做導體材料?",opts:{A:"A",B:"B",C:"C",D:"D"},ans:"A",exp:"若不考慮成本，電導係數愈高導電性越佳。"},
+  {id:186,q:"有A、B兩導線以相同之銅材料製成,若A長度為B的2倍,B截面積為A的4倍,則A導線的電阻為B的幾倍?",opts:{A:"8倍",B:"4倍",C:"2倍",D:"0.5倍"},ans:"A",exp:"RA / RB = (2 / 1) × (4 / 1) = 8 倍。"},
+  {id:187,q:"用於室內配線之銅導線,在室溫下長l、直徑D、推論絕對溫度-234.5℃,下列敘述何者正確?",opts:{A:"其等效電阻值為 4ρl / (π·D^2)",B:"若導線被剪掉四分之一長度,則其等效電阻值變為原本的1/4",C:"若導線被均勻拉長為原來的N倍,則其等效電阻值變為N倍",D:"若室溫上升為t2℃,則其等效電阻值與 (1 + t2/234.5)/(1 + t1/234.5) 成正比"},ans:"D",exp:"銅之電阻與推論絕對溫度比例滿足 R2 = R1·[ (234.5 + t2) / (234.5 + t1) ] = R1·[ (1 + t2/234.5) / (1 + t1/234.5) ]。"},
+  {id:188,q:"有一個電阻色碼為「棕橙紅棕銀」,使用三用電表量測其電阻值為1.22kΩ,則電阻量測誤差百分率為何?",opts:{A:"3.6%",B:"5.6%",C:"7.6%",D:"8.6%"},ans:"C",exp:"標稱值 = 132 × 10^1 = 1320Ω；誤差率 = |1320 - 1220| / 1320 ≈ 7.58% ≈ 7.6%。"},
+  {id:189,q:"有一電阻器在30℃時其電阻值為3Ω,在150℃時其電阻值為6Ω,則此電阻器在30℃時之溫度係數為何?",opts:{A:"(1/120) °C^-1",B:"(1/90) °C^-1",C:"(1/60) °C^-1",D:"(1/30) °C^-1"},ans:"A",exp:"(T0 + 150) / (T0 + 30) = 6 / 3 = 2 ⇒ T0 = 90℃；α30 = 1 / (90 + 30) = 1/120 °C^-1。"},
+  {id:190,q:"有色碼為棕黑紅金電阻6個,將其中3個並聯成電阻A,2個並聯成電阻B,剩下1個為電阻C,則A、B、C串聯之電阻值約為多少?",opts:{A:"143Ω",B:"183Ω",C:"1430Ω",D:"1830Ω"},ans:"D",exp:"RA = 1000/3 ≈ 333.3Ω, RB = 1000/2 = 500Ω, RC = 1000Ω；R總 = 333.3 + 500 + 1000 ≈ 1833Ω ≈ 1830Ω。"},
+  {id:191,q:"有一額定為直流120V,600W的電熱線,若修剪掉1/3長度並將剩下的長度兩端接於48V直流電壓,則消耗功率為何?",opts:{A:"80W",B:"100W",C:"144W",D:"173W"},ans:"C",exp:"原阻值 R = 120^2 / 600 = 24Ω；剩餘2/3阻值 R' = 16Ω；新功率 P = 48^2 / 16 = 144 W。"},
+  {id:192,q:"某金屬導體的電阻值與溫度為線性關係,且在16℃時為10歐姆,在66℃時為12歐姆,此導體在20℃時之電阻溫度係數約為何?",opts:{A:"0.00134 °C^-1",B:"0.00252 °C^-1",C:"0.00393 °C^-1",D:"0.00512 °C^-1"},ans:"C",exp:"|T0| = 234℃；α20 = 1 / (234 + 20) = 1 / 254 ≈ 0.00393 °C^-1。"},
+  {id:193,q:"直徑為0.01吋之導線,其截面積為",opts:{A:"7.85 圓密爾",B:"10 圓密爾",C:"78.5 圓密爾",D:"100 圓密爾"},ans:"D",exp:"D = 0.01 吋 = 10 mil；截面積 A = D^2 = 10^2 = 100 CM (圓密爾)。"},
+  {id:194,q:"均勻截面積的導線,其電阻值的大小與導線的",opts:{A:"長度及截面積成正比",B:"長度成反比,截面積成正比",C:"長度成正比,截面積成反比",D:"長度及截面積成反比"},ans:"C",exp:"由公式 R = ρ·l / A 知電阻與長度成正比、與截面積成反比。"},
+  {id:195,q:"直徑為5密爾圓形實心導線,其截面積為",opts:{A:"25 圓密爾",B:"5 圓密爾",C:"25/4 圓密爾",D:"10 圓密爾"},ans:"A",exp:"圓密爾面積定義為 A = (直徑 mil)^2 = 5^2 = 25 圓密爾 (CM)。"},
+  {id:196,q:"電阻值若為120Ω ± 5%,則其色碼順序為",opts:{A:"黑棕黑金",B:"黑棕黑銀",C:"棕紅棕金",D:"棕紅棕銀"},ans:"C",exp:"棕(1) 紅(2) 棕(10^1) 金(±5%) ⇒ 12 × 10 = 120Ω ± 5%。"},
+  {id:197,q:"色碼依序為紅、紫、金、銀電阻器,其值為",opts:{A:"0.27 ± 5% Ω",B:"0.27 ± 10% Ω",C:"2.7 ± 5% Ω",D:"2.7 ± 10% Ω"},ans:"D",exp:"紅(2) 紫(7) 金(10^-1) 銀(±10%) ⇒ 2.7 Ω ± 10%。"},
+  {id:198,q:"有一電阻器之色碼依序為紅,紅,黑,紅,棕,其電阻值為",opts:{A:"12Ω ± 1%",B:"22Ω ± 1%",C:"220Ω ± 1%",D:"22kΩ ± 1%"},ans:"D",exp:"紅(2) 紅(2) 黑(0) 紅(10^2) 棕(±1%) ⇒ 220 × 100 = 22,000Ω = 22 kΩ ± 1%。"},
+  {id:199,q:"有一電阻的色碼為「黃、紫、金、金」,表示該電阻值為",opts:{A:"0.47Ω ± 5%",B:"4.7Ω ± 5%",C:"47Ω ± 5%",D:"470Ω ± 5%"},ans:"B",exp:"黃(4) 紫(7) 金(10^-1) 金(±5%) ⇒ 47 × 0.1 = 4.7 Ω ± 5%。"},
+  {id:200,q:"某電阻接於12V直流電源,共消耗290W,則該電阻色碼可能是",opts:{A:"黑綠銀金",B:"綠黑銀金",C:"綠黑金金",D:"綠黑黑金"},ans:"B",exp:"R = 12^2 / 290 ≈ 0.496Ω ≈ 0.5Ω；綠(5) 黑(0) 銀(10^-2) ⇒ 50 × 0.01 = 0.5 Ω。"},
+  {id:201,q:"有一導線長10km,線徑2mm,已知其電阻值為5Ω,現有同一材料導線長5km,線徑1mm,則其電阻值為多少?",opts:{A:"5Ω",B:"10Ω",C:"20Ω",D:"40Ω"},ans:"B",exp:"R ∝ l / D^2 ⇒ R' = 5 × (5/10) × (2/1)^2 = 5 × 0.5 × 4 = 10 Ω。"},
+  {id:202,q:"如圖之導體長寬厚為 a>b>c,以不同方向之電流 IA 與 IB 注入,會產生大小不同電阻,則電阻A與B之關係為",opts:{A:"A之電阻大於B之電阻",B:"A之電阻小於B之電阻",C:"A之電阻等於B之電阻",D:"無法比較"},ans:"A",diagram:`<svg width="220" height="110" viewBox="0 0 220 110"><polygon points="30,30 150,30 190,60 70,60" fill="#334155" stroke="#94a3b8"/><polygon points="70,60 190,60 190,80 70,80" fill="#1e293b" stroke="#94a3b8"/><polygon points="30,30 70,60 70,80 30,50" fill="#0f172a" stroke="#94a3b8"/><text x="110" y="25" fill="#f8fafc" font-size="11">a</text><text x="40" y="55" fill="#f8fafc" font-size="11">b</text><text x="200" y="75" fill="#f8fafc" font-size="11">c (a>b>c)</text><text x="105" y="50" fill="#38bdf8" font-size="12">↓ IB</text><text x="195" y="55" fill="#38bdf8" font-size="12">← IA</text></svg>`,exp:"RA = ρ·a/(b·c)；RB = ρ·b/(a·c)；因為 a > b，故 RA > RB。"},
+  {id:203,q:"有一長10cm之導線,其電阻值為20Ω;將其拉長,使此導線之電阻值為180Ω,則此導線拉長後之長度可能為",opts:{A:"15cm",B:"18cm",C:"30cm",D:"90cm"},ans:"C",exp:"均勻拉長 R ∝ l^2 ⇒ l2 / l1 = √(180 / 20) = 3 ⇒ l2 = 10 × 3 = 30 cm。"},
+  {id:204,q:"一根導線長10m,截面積5cm²,電導係數為2×10^5(℧/公尺),則該導線電導值為多少?",opts:{A:"240 ℧",B:"200 ℧",C:"120 ℧",D:"100 ℧"},ans:"D",exp:"G = σ·A / l = 2×10^5 × (5×10^-4 m²) / 10m = 100 ℧ (S)。"},
+  {id:205,q:"在電路中,有4A的電流流過一個5Ω電阻,試求電阻消耗的電功率為多少?",opts:{A:"20W",B:"40W",C:"80W",D:"100W"},ans:"C",exp:"P = I^2·R = 4^2 × 5 = 16 × 5 = 80 W。"},
+  {id:206,q:"某電熱器之額定為100V/1250W,其等效之電阻為多少?",opts:{A:"12.5Ω",B:"8Ω",C:"5Ω",D:"2.5Ω"},ans:"B",exp:"R = V^2 / P = 100^2 / 1250 = 10000 / 1250 = 8 Ω。"},
+  {id:207,q:"某電阻器之兩端電壓為20V,流過的電流為2A,若電壓增為100V時,流過電阻之電流變為多少?",opts:{A:"60A",B:"50A",C:"40A",D:"10A"},ans:"D",exp:"R = 20 / 2 = 10Ω；I' = 100 / 10 = 10 A。"},
+  {id:208,q:"溫度60℃時,銅線電阻為0.54Ω,若溫度下降20℃後(40℃),該電阻值為",opts:{A:"0.409Ω",B:"0.426Ω",C:"0.466Ω",D:"0.503Ω"},ans:"D",exp:"R40 / 0.54 = (234.5 + 40) / (234.5 + 60) = 274.5 / 294.5 ⇒ R40 ≈ 0.503 Ω。"},
+  {id:209,q:"鎢於20℃時之電阻溫度係數為0.0045 °C^-1,求推測之零電阻溫度T0及在0℃時之電阻溫度係數α0為",opts:{A:"T0 = 202.2°C, α0 = 0.004945 °C^-1",B:"T0 = 198.57°C, α0 = 0.005105 °C^-1",C:"T0 = 196.8°C, α0 = 0.004864 °C^-1",D:"T0 = 201.6°C, α0 = 0.004784 °C^-1"},ans:"A",exp:"|T0| + 20 = 1 / 0.0045 = 222.2 ⇒ |T0| = 202.2℃；α0 = 1 / 202.2 ≈ 0.004945 °C^-1。"},
+  {id:210,q:"一線圈在未通電時其電阻為3Ω,電阻之溫度係數為0.005 °C^-1,若通電後溫度上升40℃,則線圈的電阻變為多少?",opts:{A:"2.2Ω",B:"2.4Ω",C:"2.6Ω",D:"3.6Ω"},ans:"D",exp:"R2 = R1·(1 + α·ΔT) = 3 × (1 + 0.005 × 40) = 3 × 1.2 = 3.6 Ω。"},
+  {id:211,q:"有一只電阻器在10℃時電阻值為10Ω,在50℃時為11Ω,求在100℃時,電阻值為多少?",opts:{A:"3.25Ω",B:"11.75Ω",C:"12.25Ω",D:"15.75Ω"},ans:"C",exp:"(T0 + 50) / (T0 + 10) = 11 / 10 ⇒ T0 = 390℃；R100 = 10 × (390 + 100) / (390 + 10) = 12.25 Ω。"},
+  {id:212,q:"某電阻值為10歐姆之負載通有4A之電流,則於一分鐘內轉換為熱之能量為",opts:{A:"9600焦耳",B:"4800焦耳",C:"2400焦耳",D:"1200焦耳"},ans:"A",exp:"W = I^2·R·t = 4^2 × 10 × 60 = 160 × 60 = 9600 焦耳。"},
+  {id:213,q:"有一1kW的電熱水器,內裝有10公升水,加熱10分鐘,求水溫上升多少℃?",opts:{A:"6.2°C",B:"10.6°C",C:"14.4°C",D:"18.9°C"},ans:"C",exp:"ΔT = 0.24 × 1000 × 600 / 10000 = 14.4°C。"},
+  {id:214,q:"當溫度升高時,一般金屬導體電阻增加,而半導體(矽等)在溫度上升時,其電阻",opts:{A:"上升",B:"下降",C:"不變",D:"成絕緣體"},ans:"B",exp:"金屬導體屬於正溫度係數(PTC)，半導體及絕緣體多屬於負溫度係數(NTC)，溫度升高時電阻下降。"},
+  {id:215,q:"導線的電阻值與其長度及截面積的關係各為何?",opts:{A:"與長度成正比,與截面積成正比",B:"與長度成正比,與截面積成反比",C:"與長度成反比,與截面積成正比",D:"與長度成反比,與截面積成反比"},ans:"B",exp:"R = ρ·l / A，與長度成正比、與截面積成反比。"},
+  {id:216,q:"某銅線電阻係數為1.724×10^-6 Ω-cm,直徑為2mm,長度為1km,求其電阻約為多少?",opts:{A:"3.5Ω",B:"4.5Ω",C:"5.5Ω",D:"6.5Ω"},ans:"C",exp:"D = 0.2 cm；A = π·(0.2)^2 / 4 ≈ 0.0314 cm²；l = 100000 cm；R = 1.724×10^-6 × 100000 / 0.0314 ≈ 5.49Ω ≈ 5.5Ω。"}
+];
+
+  let currentIdx = 0;
+let filteredQuestions = [...rawQuestions];
+let userAnswers = {};
+let favoriteIds = new Set();
+let isShuffle = false;
+
+function init() {
+  document.getElementById("total-count").innerText = rawQuestions.length;
+  renderQuestion();
+}
+
+function renderQuestion() {
+  if (filteredQuestions.length === 0) {
+    document.getElementById("q-counter").innerText = "無題目";
+    document.getElementById("q-text").innerText = "目前分類沒有題目！";
+    document.getElementById("q-diagram-container").innerHTML = "";
+    document.getElementById("q-options").innerHTML = "";
+    document.getElementById("q-explanation").classList.remove("show");
+    updateDashboard();
+    return;
+  }
+
+  if (currentIdx >= filteredQuestions.length) currentIdx = filteredQuestions.length - 1;
+  if (currentIdx < 0) currentIdx = 0;
+
+  const item = filteredQuestions[currentIdx];
+  document.getElementById("q-counter").innerText = `題號: ${item.id} (${currentIdx + 1}/${filteredQuestions.length})`;
+  document.getElementById("q-text").innerText = `${item.id}. ${item.q}`;
+  
+  const diagContainer = document.getElementById("q-diagram-container");
+  if (item.diagram) {
+    diagContainer.innerHTML = `<div class="q-diagram">${item.diagram}</div>`;
+  } else {
+    diagContainer.innerHTML = "";
+  }
+
+  const optContainer = document.getElementById("q-options");
+  optContainer.innerHTML = "";
+  
+  const userAns = userAnswers[item.id];
+  const hasAnswered = userAns !== undefined;
+
+  for (const [key, val] of Object.entries(item.opts)) {
+    const btn = document.createElement("button");
+    btn.className = "option-btn";
+    btn.innerHTML = `<span class="opt-letter">${key}</span> <span>${val}</span>`;
+    
+    if (hasAnswered) {
+      if (key === item.ans) {
+        btn.classList.add("correct");
+      } else if (key === userAns) {
+        btn.classList.add("wrong");
+      }
+      btn.disabled = true;
+    } else {
+      btn.onclick = () => selectOption(key);
+    }
+    optContainer.appendChild(btn);
+  }
+
+  const expBox = document.getElementById("q-explanation");
+  if (hasAnswered) {
+    document.getElementById("explanation-text").innerText = item.exp || "暫無特別解析";
+    expBox.classList.add("show");
+  } else {
+    expBox.classList.remove("show");
+  }
+
+  const starBtn = document.getElementById("star-btn");
+  if (favoriteIds.has(item.id)) {
+    starBtn.classList.add("fav");
+  } else {
+    starBtn.classList.remove("fav");
+  }
+
+  updateDashboard();
+}
+
+function selectOption(ans) {
+  const item = filteredQuestions[currentIdx];
+  userAnswers[item.id] = ans;
+  renderQuestion();
+}
+
+function nextQuestion() {
+  if (currentIdx < filteredQuestions.length - 1) {
+    currentIdx++;
+    renderQuestion();
+  }
+}
+
+function prevQuestion() {
+  if (currentIdx > 0) {
+    currentIdx--;
+    renderQuestion();
+  }
+}
+
+function handleJump(e) {
+  if (e.key === "Enter") {
+    const val = parseInt(e.target.value);
+    const targetIdx = filteredQuestions.findIndex(q => q.id === val);
+    if (targetIdx !== -1) {
+      currentIdx = targetIdx;
+      renderQuestion();
+      e.target.value = "";
+    } else {
+      alert("在此分類下找不到該題號！");
+    }
+  }
+}
+
+function toggleCurrentFav() {
+  const item = filteredQuestions[currentIdx];
+  if (!item) return;
+  if (favoriteIds.has(item.id)) {
+    favoriteIds.delete(item.id);
+  } else {
+    favoriteIds.add(item.id);
+  }
+  renderQuestion();
+}
+
+function switchFilter(type) {
+  document.querySelectorAll(".controls .btn-group button").forEach(b => b.classList.remove("active"));
+  if (type === 'all') {
+    filteredQuestions = isShuffle ? [...rawQuestions].sort(() => Math.random() - 0.5) : [...rawQuestions];
+    document.getElementById("btn-mode-all").classList.add("active");
+  } else if (type === 'wrong') {
+    const list = rawQuestions.filter(q => userAnswers[q.id] && userAnswers[q.id] !== q.ans);
+    filteredQuestions = isShuffle ? list.sort(() => Math.random() - 0.5) : list;
+    document.getElementById("btn-mode-wrong").classList.add("active");
+  } else if (type === 'fav') {
+    const list = rawQuestions.filter(q => favoriteIds.has(q.id));
+    filteredQuestions = isShuffle ? list.sort(() => Math.random() - 0.5) : list;
+    document.getElementById("btn-mode-fav").classList.add("active");
+  }
+  currentIdx = 0;
+  renderQuestion();
+}
+
+function toggleShuffle() {
+  isShuffle = !isShuffle;
+  const btn = document.getElementById("btn-shuffle");
+  if (isShuffle) {
+    btn.innerText = "隨機模式: 開";
+    btn.classList.add("active");
+    filteredQuestions.sort(() => Math.random() - 0.5);
+  } else {
+    btn.innerText = "隨機模式: 關";
+    btn.classList.remove("active");
+    filteredQuestions.sort((a, b) => a.id - b.id);
+  }
+  currentIdx = 0;
+  renderQuestion();
+}
+
+function resetStats() {
+  if (confirm("確定要重置所有作答進度與收藏嗎？")) {
+    userAnswers = {};
+    favoriteIds.clear();
+    currentIdx = 0;
+    renderQuestion();
+  }
+}
+
+function updateDashboard() {
+  let correct = 0;
+  let wrong = 0;
+  const answeredCount = Object.keys(userAnswers).length;
+  
+  for (const [id, ans] of Object.entries(userAnswers)) {
+    const q = rawQuestions.find(item => item.id == id);
+    if (q) {
+      if (q.ans === ans) correct++;
+      else wrong++;
+    }
+  }
+
+  document.getElementById("stat-score").innerText = `${answeredCount} / ${rawQuestions.length}`;
+  document.getElementById("stat-correct").innerText = correct;
+  document.getElementById("stat-wrong").innerText = wrong;
+  document.getElementById("stat-fav").innerText = favoriteIds.size;
+  document.getElementById("wrong-count").innerText = wrong;
+  document.getElementById("fav-count").innerText = favoriteIds.size;
+}
+
+init();
+</script>
+</body>
+</html>
